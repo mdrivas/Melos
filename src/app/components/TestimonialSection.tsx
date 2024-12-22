@@ -34,14 +34,16 @@ const testimonials: Testimonial[] = [
 
 function TestimonialCard({ prompt, playlist, userName, playlistName }: Testimonial) {
   return (
-    <div className="w-full max-w-md mx-auto">
-      <div className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 shadow-lg">
-        <Quote className="h-5 w-5 text-zinc-500 mb-3" />
-        <p className="text-sm text-zinc-400 mb-4 italic">&ldquo;{prompt}&rdquo;</p>
-        <div className="flex items-center justify-between gap-2">
+    <div className="w-full max-w-sm mx-auto">
+      <div className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-4 shadow-lg min-h-[160px] flex flex-col justify-between">
+        <div className="space-y-2">
+          <Quote className="h-4 w-4 text-zinc-500" />
+          <p className="text-sm text-zinc-400 italic line-clamp-2">&ldquo;{prompt}&rdquo;</p>
+        </div>
+        <div className="flex items-center justify-between gap-2 pt-3 border-t border-zinc-800/50">
           <div className="min-w-0">
             <p className="text-sm font-medium leading-none text-zinc-200">{userName}</p>
-            <p className="text-xs text-zinc-500 mt-1">{playlistName}</p>
+            <p className="text-xs text-zinc-500 mt-1 truncate max-w-[120px]">{playlistName}</p>
           </div>
           <Button
             asChild
@@ -71,9 +73,9 @@ export function TestimonialSection() {
   }, []);
 
   return (
-    <section className="py-24 px-4">
-      <div className="space-y-8">
-        <h2 className="text-2xl font-semibold text-center text-zinc-100">
+    <section className="py-6 px-4">
+      <div className="space-y-4">
+        <h2 className="text-base font-semibold text-center text-zinc-100">
           See what others are creating
         </h2>
         
@@ -82,15 +84,15 @@ export function TestimonialSection() {
             {...testimonials[currentIndex]!} 
           />
           
-          <div className="flex justify-center gap-2 mt-6">
+          <div className="flex justify-center gap-2 mt-3">
             {testimonials.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`h-1.5 rounded-full transition-all ${
+                className={`h-1 rounded-full transition-all ${
                   index === currentIndex 
-                    ? 'w-8 bg-purple-500' 
-                    : 'w-4 bg-zinc-800 hover:bg-zinc-700'
+                    ? 'w-6 bg-purple-500' 
+                    : 'w-3 bg-zinc-800 hover:bg-zinc-700'
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />

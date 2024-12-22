@@ -9,7 +9,7 @@ import { AuthProvider } from "./components/AuthProvider";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: "Moodify",
+  title: "Melos",
   description: "AI-powered playlist generation for every moment",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };

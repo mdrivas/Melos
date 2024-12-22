@@ -88,25 +88,32 @@ export function PlaylistGenerator({ className }: PlaylistGeneratorProps) {
       </div>
 
       <Dialog open={showModal} onOpenChange={setShowModal}>
-        <DialogContent className="bg-zinc-900 border-none relative overflow-hidden sm:max-w-md
-          before:absolute before:w-[200%] before:h-[200%] before:-left-[50%] before:-top-[50%] before:animate-spin-slow before:bg-gradient-conic before:from-purple-500/20 before:via-violet-500/20 before:to-fuchsia-500/20
-          after:absolute after:inset-[1px] after:rounded-lg after:bg-zinc-900">
-          <DialogHeader className="relative z-10">
-            <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-purple-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent animate-gradient">
-              Your Playlist is Ready! 🎉
+        <DialogContent className="fixed left-1/2 top-1/2 w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 rounded-xl border border-zinc-800 bg-zinc-950/95 text-zinc-50 sm:w-full sm:max-w-[400px] [&>button]:hidden">
+          <DialogHeader>
+            <DialogTitle className="text-3xl font-bold text-center">
+              <span className="bg-gradient-to-r from-purple-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
+                Your Playlist is Ready! 🎉
+              </span>
             </DialogTitle>
-            <DialogDescription className="text-zinc-300">
+            <DialogDescription className="text-center text-zinc-300 mt-2">
               Click below to open your personalized playlist on Spotify.
             </DialogDescription>
           </DialogHeader>
-          <div className="relative z-10 space-y-4">
+          <div className="mt-6 space-y-4">
             <Button 
               asChild 
-              className="w-full bg-[#1DB954] hover:bg-[#1ed760] text-white font-bold py-6 text-lg transition-all duration-300 shadow-lg hover:shadow-[#1DB954]/25"
+              className="w-full rounded-xl bg-[#1DB954] hover:bg-[#1ed760] text-white font-bold py-6 text-lg transition-all duration-300 shadow-lg hover:shadow-[#1DB954]/25"
             >
               <a href={playlistData?.url} target="_blank" rel="noopener noreferrer">
                 Open in Spotify
               </a>
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => setShowModal(false)}
+              className="w-full rounded-xl border-zinc-800 bg-transparent text-zinc-200 hover:bg-zinc-800/50 py-6 text-lg font-medium"
+            >
+              Close
             </Button>
           </div>
         </DialogContent>
