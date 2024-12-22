@@ -1,67 +1,64 @@
-import Link from "next/link";
-
-import { LatestPost } from "./components/post";
+import { Button } from "~/components/ui/button";
 import { getServerAuthSession } from "~/server/auth";
-import { api, HydrateClient } from "~/trpc/server";
+import { PlaylistGenerator } from "~/app/components/PlaylistGenerator";
+import { Music4, Sparkles } from "lucide-react";
+import { TestimonialSection } from "~/app/components/TestimonialSection";
 
 export default async function Home() {
-  const hello = await api.post.hello({ text: "from tRPC" });
   const session = await getServerAuthSession();
 
-  void api.post.getLatest.prefetch();
-
   return (
-    <HydrateClient>
-      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-        <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
-          <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-            Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
-          </h1>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-            <Link
-              className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-              href="https://create.t3.gg/en/usage/first-steps"
-              target="_blank"
-            >
-              <h3 className="text-2xl font-bold">First Steps →</h3>
-              <div className="text-lg">
-                Just the basics - Everything you need to know to set up your
-                database and authentication.
+    <main className="min-h-screen bg-gradient-to-b from-zinc-900 to-black">
+      {session && (
+        <div className="absolute right-3 top-3 sm:right-4 sm:top-4">
+          <Button
+            variant="ghost"
+            size="sm"
+            className="text-zinc-300 hover:text-white hover:bg-zinc-800/50 transition-all"
+            asChild
+          >
+            <a href="/api/auth/signout">Sign out</a>
+          </Button>
+        </div>
+      )}
+      
+      <div className="container mx-auto min-h-screen flex flex-col">
+        <div className="flex-1 flex items-center justify-center">
+          <div className="w-full max-w-lg text-center space-y-4 sm:space-y-6 px-4">
+            <div className="space-y-3">
+              <div className="flex justify-center">
+                <Music4 className="h-12 w-12 text-purple-400" />
               </div>
-            </Link>
-            <Link
-              className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-              href="https://create.t3.gg/en/introduction"
-              target="_blank"
-            >
-              <h3 className="text-2xl font-bold">Documentation →</h3>
-              <div className="text-lg">
-                Learn more about Create T3 App, the libraries it uses, and how
-                to deploy it.
-              </div>
-            </Link>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <p className="text-2xl text-white">
-              {hello ? hello.greeting : "Loading tRPC query..."}
+              <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-none px-2 flex flex-wrap justify-center items-center gap-x-3 gap-y-1">
+                <span>Your perfect playlist,</span>
+                <span className="bg-gradient-to-r from-violet-300 via-purple-400 to-purple-700 bg-clip-text text-transparent inline-flex items-center gap-2 relative">
+                  powered by AI
+                  <Sparkles className="h-6 w-6 sm:h-8 sm:w-8 hidden sm:inline text-purple-400" />
+                </span>
+              </h1>
+            </div>
+            
+            <p className="text-base text-zinc-400 max-w-sm mx-auto px-2">
+              Tell us how you&apos;re feeling or what you&apos;re doing, and we&apos;ll create the perfect playlist for your moment.
             </p>
 
-            <div className="flex flex-col items-center justify-center gap-4">
-              <p className="text-center text-2xl text-white">
-                {session && <span>Logged in as {session.user?.name}</span>}
-              </p>
-              <Link
-                href={session ? "/api/auth/signout" : "/api/auth/signin"}
-                className="rounded-full bg-white/10 px-10 py-3 font-semibold no-underline transition hover:bg-white/20"
+            {session ? (
+              <PlaylistGenerator className="mt-6" />
+            ) : (
+              <Button
+                asChild
+                size="lg"
+                className="mt-6 rounded-full bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-700 hover:to-violet-700 text-white transition-all duration-300 shadow-lg hover:shadow-purple-500/25 font-medium px-8 py-6 text-base sm:text-lg"
               >
-                {session ? "Sign out" : "Sign in"}
-              </Link>
-            </div>
+                <a href="/api/auth/signin">Sign in with Spotify to continue</a>
+              </Button>
+            )}
           </div>
-
-          {session?.user && <LatestPost />}
         </div>
-      </main>
-    </HydrateClient>
+
+        {/* Testimonials section */}
+        {!session && <TestimonialSection />}
+      </div>
+    </main>
   );
 }
