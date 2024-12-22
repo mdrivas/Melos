@@ -58,6 +58,12 @@ export const authOptions: NextAuthOptions = {
       }
       return token;
     },
+    redirect({ url, baseUrl }) {
+      if (url.includes("error=access_denied")) {
+        return baseUrl;
+      }
+      return url.startsWith(baseUrl) ? url : baseUrl;
+    },
   },
   adapter: DrizzleAdapter(db, {
     usersTable: users,
@@ -71,7 +77,7 @@ export const authOptions: NextAuthOptions = {
       clientSecret: env.SPOTIFY_CLIENT_SECRET,
       authorization: {
         params: {
-          scope: "playlist-modify-public playlist-modify-private user-read-email"
+          scope: "playlist-modify-public playlist-modify-private user-read-email user-read-private streaming user-library-read"
         }
       }
     }),
@@ -90,8 +96,10 @@ export const authOptions: NextAuthOptions = {
     maxAge: 7 * 24 * 60 * 60, // 7 days
   },
   pages: {
-    signIn: '/auth/signin',
+    error: "/",
+    signIn: "/",
   },
+  debug: process.env.NODE_ENV === "development",
 };
 
 /**
