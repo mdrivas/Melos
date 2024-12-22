@@ -1,7 +1,7 @@
 import { Button } from "~/components/ui/button";
 import { getServerAuthSession } from "~/server/auth";
 import { PlaylistGenerator } from "~/app/components/PlaylistGenerator";
-import { Music4, Sparkles, Waves } from "lucide-react";
+import { Music4, Sparkles } from "lucide-react";
 import { TestimonialSection } from "~/app/components/TestimonialSection";
 
 export default async function Home() {
@@ -23,13 +23,11 @@ export default async function Home() {
       )}
       
       <div className="relative h-full container mx-auto flex flex-col justify-between py-8 sm:py-10">
-        <div className="flex-1 flex items-center justify-center mb-4">
-          <div className="w-full max-w-xl text-center space-y-8 sm:space-y-10 px-4">
+        <div className="flex-1 flex items-center justify-center mb-0">
+          <div className="w-full max-w-xl text-center space-y-8 sm:space-y-10 px-4 -mb-8">
             <div className="space-y-2 sm:space-y-3">
-              <div className="flex justify-center items-center gap-3">
-                <Music4 className="h-10 w-10 sm:h-12 sm:w-12 text-purple-400" />
-                <Waves className="h-8 w-8 sm:h-10 sm:w-10 text-violet-400" />
-                <Sparkles className="h-6 w-6 sm:h-8 sm:w-8 text-fuchsia-400" />
+              <div className="flex justify-center items-center">
+                <Music4 className="h-12 w-12 sm:h-14 sm:w-14 text-purple-400" />
               </div>
               <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white leading-none px-2 flex flex-wrap justify-center items-center gap-x-3 gap-y-2">
                 <span>Your perfect playlist,</span>
@@ -59,7 +57,7 @@ export default async function Home() {
         </div>
 
         {!session && (
-          <div className="flex-none -mt-8">
+          <div className="flex-none -mt-16">
             <TestimonialSection />
           </div>
         )}
