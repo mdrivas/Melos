@@ -73,8 +73,8 @@ export function TestimonialSection() {
   }, []);
 
   return (
-    <section className="py-4 px-4">
-      <div className="space-y-3">
+    <section className="py-2 px-4 animate-float-up">
+      <div className="space-y-2">
         <h2 className="text-xs sm:text-sm font-semibold text-center text-zinc-100">
           See what others are creating
         </h2>
@@ -84,7 +84,7 @@ export function TestimonialSection() {
             {...testimonials[currentIndex]!} 
           />
           
-          <div className="flex justify-center gap-1.5 mt-2">
+          <div className="flex justify-center gap-1.5 mt-1.5">
             {testimonials.map((_, index) => (
               <button
                 key={index}
