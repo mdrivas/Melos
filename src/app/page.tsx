@@ -48,6 +48,14 @@ export default async function Home() {
             <TestimonialSection />
           </div>
         )}
+        
+        <div className="absolute bottom-2 left-0 right-0 text-center text-xs text-zinc-500">
+          <span className="space-x-3">
+            <a href="/terms" className="hover:text-zinc-300">Terms</a>
+            <span>·</span>
+            <a href="/privacy" className="hover:text-zinc-300">Privacy</a>
+          </span>
+        </div>
       </div>
     </main>
   );
