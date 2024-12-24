@@ -7,6 +7,7 @@ import { env } from "~/env";
 import { TRPCError } from "@trpc/server";
 import SpotifyWebApi from "spotify-web-api-node";
 import { headers } from "next/headers";
+import { playlists } from "~/server/db/schema";
 
 // Configuration
 const PLAYLIST_CONFIG = {
@@ -359,6 +360,13 @@ export const spotifyRouter = createTRPCRouter({
                 .catch(error => reject(new Error(error?.message ?? "Failed to add tracks")));
             });
           }
+
+          await ctx.db.insert(playlists).values({
+            userId: ctx.session.user.id,
+            prompt: input.prompt,
+            playlistUrl: playlist.body.external_urls.spotify,
+            keywords: JSON.stringify(keywords), // Store the OpenAI response
+          });
 
           return {
             playlistUrl: playlist.body.external_urls.spotify,
