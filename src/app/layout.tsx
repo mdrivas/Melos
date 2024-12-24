@@ -12,7 +12,33 @@ import { Suspense } from "react";
 export const metadata: Metadata = {
   title: "Melos",
   description: "AI-powered playlist generation for every moment",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  icons: [
+    { rel: "icon", url: "/favicon.ico" },
+    { rel: "apple-touch-icon", url: "/logo.png" }
+  ],
+  openGraph: {
+    title: "Melos",
+    description: "AI-powered playlist generation for every moment",
+    url: "https://melos.ai",
+    siteName: "Melos",
+    images: [
+      {
+        url: "/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Melos - AI Playlist Generator"
+      }
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Melos",
+    description: "AI-powered playlist generation for every moment",
+    images: ["/logo.png"],
+    creator: "@yourtwitterhandle"
+  },
 };
 
 export default function RootLayout({
