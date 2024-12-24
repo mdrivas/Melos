@@ -14,24 +14,42 @@ interface PlaylistGeneratorProps {
 }
 
 interface PlaylistData {
-  url: string;
+  playlistUrl: string;
+  tracks?: Array<{
+    name: string;
+    artists: string;
+  }>;
 }
 
 export function PlaylistGenerator({ className }: PlaylistGeneratorProps) {
   const [prompt, setPrompt] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [playlistData, setPlaylistData] = useState<PlaylistData | null>(null);
+  const { toast } = useToast();
   
-  const generatePlaylist = api.spotify.generatePlaylist.useMutation<{ playlistUrl: string }>({
+  const generatePlaylist = api.spotify.generatePlaylist.useMutation({
     onSuccess: (data) => {
+      if (!data?.playlistUrl) {
+        toast({
+          variant: "destructive",
+          title: "Error",
+          description: "Failed to get playlist URL"
+        });
+        return;
+      }
+
       setPlaylistData({
-        url: data.playlistUrl,
-      } as PlaylistData);
+        playlistUrl: data.playlistUrl,
+        tracks: data.tracks
+      });
       setShowModal(true);
       setPrompt(""); // Clear input
     },
     onError: (error) => {
-      if (error.message.includes("access token expired")) {
+      console.error("Playlist generation error:", error);
+      
+      if (error.message.includes("access token expired") || 
+          error.message.includes("No Spotify access token found")) {
         toast({
           variant: "destructive",
           title: "Session Expired",
@@ -51,19 +69,31 @@ export function PlaylistGenerator({ className }: PlaylistGeneratorProps) {
         toast({
           variant: "destructive",
           title: "Error",
-          description: error.message
+          description: error.message || "Failed to generate playlist. Please try again."
         });
       }
     }
   });
 
-  const { toast } = useToast();
+  const handleSubmit = () => {
+    const trimmedPrompt = prompt.trim();
+    if (!trimmedPrompt) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Please enter a prompt"
+      });
+      return;
+    }
+
+    generatePlaylist.mutate({ prompt: trimmedPrompt });
+  };
 
   return (
     <>
       <div className={cn("space-y-6 w-full", className)}>
         <Textarea
-          placeholder="e.g., &apos;I&apos;m feeling energetic and want to work out&apos; or &apos;Need some calm music for studying&apos;"
+          placeholder="e.g., 'I'm feeling energetic and want to work out' or 'Need some calm music for studying'"
           value={prompt}
           onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setPrompt(e.target.value)}
           className="min-h-[120px] sm:min-h-[100px] w-full resize-none bg-zinc-800/50 border-zinc-700/50 text-white placeholder:text-zinc-300/50 focus:border-purple-500 focus:ring-purple-500/20 rounded-xl text-sm sm:text-base transition-all"
@@ -73,7 +103,7 @@ export function PlaylistGenerator({ className }: PlaylistGeneratorProps) {
         <Button 
           className="w-full rounded-full bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-700 hover:to-violet-700 text-white transition-all duration-300 shadow-lg hover:shadow-purple-500/25 font-medium py-6 text-base sm:text-lg disabled:opacity-50"
           size="lg"
-          onClick={() => generatePlaylist.mutate({ prompt })}
+          onClick={handleSubmit}
           disabled={generatePlaylist.isPending || !prompt.trim()}
         >
           {generatePlaylist.isPending ? (
@@ -104,7 +134,7 @@ export function PlaylistGenerator({ className }: PlaylistGeneratorProps) {
               asChild 
               className="w-full rounded-xl bg-[#1DB954] hover:bg-[#1ed760] text-white font-bold py-6 text-lg transition-all duration-300 shadow-lg hover:shadow-[#1DB954]/25"
             >
-              <a href={playlistData?.url} target="_blank" rel="noopener noreferrer">
+              <a href={playlistData?.playlistUrl} target="_blank" rel="noopener noreferrer">
                 Open in Spotify
               </a>
             </Button>

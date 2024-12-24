@@ -318,23 +318,45 @@ export const spotifyRouter = createTRPCRouter({
           const playlistName = `Melos: ${sanitizeInput(input.prompt)}`;
           const playlistDescription = `Created by Melos AI based on: ${input.prompt.trim().slice(0, 100)}`;
           
-          // Create playlist using promise-based approach
-          const playlist = await new Promise((resolve, reject) => {
-            spotifyApi
-              .createPlaylist(playlistName, {
-                description: playlistDescription,
-                public: false,
-                collaborative: false
-              })
-              .then(response => resolve(response))
-              .catch(error => reject(new Error(error?.message ?? "Failed to create playlist")));
-          });
+          // Validate and sanitize keywords before storing
+          const sanitizedKeywords = {
+            artists: keywords.artists || [],
+            genres: keywords.genres || [],
+            mood_terms: keywords.mood_terms || [],
+            context_terms: keywords.context_terms || [],
+          };
 
-          if (!playlist || !playlist.body || !playlist.body.id) {
+          // Create playlist with error handling
+          const playlist = await spotifyApi.createPlaylist(playlistName, {
+            description: playlistDescription,
+            public: false,
+            collaborative: false
+          }).catch(error => {
+            console.error("[Spotify] Create playlist error:", error);
             throw new TRPCError({
               code: "INTERNAL_SERVER_ERROR",
-              message: "Failed to create playlist"
+              message: "Failed to create Spotify playlist"
             });
+          });
+
+          if (!playlist?.body?.external_urls?.spotify) {
+            throw new TRPCError({
+              code: "INTERNAL_SERVER_ERROR",
+              message: "Invalid playlist response from Spotify"
+            });
+          }
+
+          // Save to database with error handling
+          try {
+            await ctx.db.insert(playlists).values({
+              userId: ctx.session.user.id,
+              prompt: input.prompt,
+              playlistUrl: playlist.body.external_urls.spotify,
+              keywords: JSON.stringify(sanitizedKeywords),
+            });
+          } catch (dbError) {
+            console.error("[DB] Save playlist error:", dbError);
+            // Don't throw here - playlist was created successfully
           }
 
           // Add tracks in batches
@@ -361,14 +383,8 @@ export const spotifyRouter = createTRPCRouter({
             });
           }
 
-          await ctx.db.insert(playlists).values({
-            userId: ctx.session.user.id,
-            prompt: input.prompt,
-            playlistUrl: playlist.body.external_urls.spotify,
-            keywords: JSON.stringify(keywords), // Store the OpenAI response
-          });
-
           return {
+            success: true,
             playlistUrl: playlist.body.external_urls.spotify,
             tracks: selectedTracks.map(track => ({
               name: track.name,
