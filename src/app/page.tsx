@@ -1,16 +1,17 @@
 import { Button } from "~/components/ui/button";
 import { getServerAuthSession } from "~/server/auth";
 import { PlaylistGenerator } from "~/app/components/PlaylistGenerator";
-import { Music4, Sparkles } from "lucide-react";
+import { Music4, Sparkles, MessageSquareText, PlayCircle, Headphones } from "lucide-react";
 import { TestimonialSection } from "~/app/components/TestimonialSection";
 import { SpotifyAuthButton } from "~/app/components/SpotifyAuthButton";
 import { SignOutButton } from "~/app/components/SignOutButton";
+import { PlaylistSteps } from "~/app/components/PlaylistSteps";
 
 export default async function Home() {
   const session = await getServerAuthSession();
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-zinc-900 to-black overflow-hidden">
+    <main className="min-h-screen bg-gradient-to-b from-zinc-900 to-black overflow-hidden relative pb-12">
       {session && (
         <div className="absolute right-3 top-3 sm:right-4 sm:top-4">
           <SignOutButton />
@@ -37,7 +38,7 @@ export default async function Home() {
           </p>
 
           {session ? (
-            <PlaylistGenerator className="mt-6 sm:mt-8" />
+            <PlaylistSteps />
           ) : (
             <SpotifyAuthButton />
           )}
@@ -48,14 +49,14 @@ export default async function Home() {
             <TestimonialSection />
           </div>
         )}
-        
-        <div className="absolute bottom-2 left-0 right-0 text-center text-xs text-zinc-500">
-          <span className="space-x-3">
-            <a href="/terms" className="hover:text-zinc-300">Terms</a>
-            <span>·</span>
-            <a href="/privacy" className="hover:text-zinc-300">Privacy</a>
-          </span>
-        </div>
+      </div>
+
+      <div className="fixed bottom-4 right-4 text-xs text-zinc-500">
+        <span className="space-x-3">
+          <a href="/terms" className="hover:text-zinc-300">Terms</a>
+          <span>·</span>
+          <a href="/privacy" className="hover:text-zinc-300">Privacy</a>
+        </span>
       </div>
     </main>
   );
