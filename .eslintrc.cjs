@@ -66,7 +66,8 @@ const config = {
     "@typescript-eslint/no-unsafe-return": "off",
     "@typescript-eslint/no-unsafe-argument": "off",
     "@typescript-eslint/ban-ts-comment": "off",
-    "@typescript-eslint/no-unsafe-enum-comparison": "off"
+    "@typescript-eslint/no-unsafe-enum-comparison": "off",
+    "react/no-unescaped-entities": "off"
   }
 }
 module.exports = config;
