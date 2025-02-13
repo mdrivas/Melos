@@ -1,63 +1,113 @@
-import { Button } from "~/components/ui/button";
 import { getServerAuthSession } from "~/server/auth";
-import { PlaylistGenerator } from "~/app/components/PlaylistGenerator";
-import { Music4, Sparkles, MessageSquareText, PlayCircle, Headphones } from "lucide-react";
-import { TestimonialSection } from "~/app/components/TestimonialSection";
-import { SpotifyAuthButton } from "~/app/components/SpotifyAuthButton";
-import { SignOutButton } from "~/app/components/SignOutButton";
-import { PlaylistSteps } from "~/app/components/PlaylistSteps";
+import Link from "next/link";
+import Image from "next/image";
 
 export default async function Home() {
   const session = await getServerAuthSession();
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-zinc-900 to-black overflow-hidden relative pb-12">
-      {session && (
-        <div className="absolute right-3 top-3 sm:right-4 sm:top-4">
-          <SignOutButton />
-        </div>
-      )}
-      
-      <div className="relative container mx-auto flex flex-col py-6 sm:py-10">
-        <div className="w-full max-w-xl mx-auto text-center space-y-6 sm:space-y-8 px-4 pt-8 sm:pt-12">
-          <div className="space-y-2 sm:space-y-3">
-            <div className="flex justify-center items-center">
-              <Music4 className="h-10 w-10 sm:h-14 sm:w-14 text-purple-400" />
-            </div>
-            <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white leading-none px-2 flex flex-wrap justify-center items-center gap-x-3 gap-y-2">
-              <span>Your perfect playlist,</span>
-              <span className="bg-gradient-to-r from-violet-300 via-purple-400 to-purple-700 bg-clip-text text-transparent inline-flex items-center gap-2">
-                powered by AI
-                <Sparkles className="h-4 w-4 sm:h-6 sm:w-6 text-purple-400" />
-              </span>
-            </h1>
-          </div>
-          
-          <p className="text-sm sm:text-base text-zinc-400 max-w-sm mx-auto px-2">
-            Tell us how you&apos;re feeling or what you&apos;re doing, and we&apos;ll create the perfect playlist for your moment.
+    <main className="min-h-screen bg-white text-gray-900">
+      {/* Hero Section */}
+      <section className="relative h-[80vh] flex items-center justify-center bg-gradient-to-r from-blue-50 to-indigo-50">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-indigo-900">
+            The Provider's Coach Project
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto mb-8">
+            Empowering healthcare providers through personalized, no-cost development coaching
           </p>
-
-          {session ? (
-            <PlaylistSteps />
-          ) : (
-            <SpotifyAuthButton />
-          )}
+          <Link 
+            href="/schedule"
+            className="inline-block bg-indigo-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-indigo-700 transition-colors"
+          >
+            Schedule a Session
+          </Link>
         </div>
+      </section>
 
-        {!session && (
-          <div className="mt-8 sm:mt-12">
-            <TestimonialSection />
+      {/* Mission Statement */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12 text-indigo-900">Our Mission</h2>
+          <div className="max-w-4xl mx-auto text-lg text-gray-700 leading-relaxed">
+            <p className="mb-6">
+              At The Provider's Coach Project, we believe that no healthcare provider should navigate their career challenges alone. Our mission is to offer no cost, one-on-one development coaching to physicians, physician associates and nurse practitioners, empowering them to navigate through their careers with confidence and resolve.
+            </p>
+            <p>
+              Through personalized coaching, we aim to heal the culture of medicine by helping healthcare providers thrive both personally and professionally.
+            </p>
           </div>
-        )}
-      </div>
+        </div>
+      </section>
 
-      <div className="fixed bottom-4 right-4 text-xs text-zinc-500">
-        <span className="space-x-3">
-          <a href="/terms" className="hover:text-zinc-300">Terms</a>
-          <span>·</span>
-          <a href="/privacy" className="hover:text-zinc-300">Privacy</a>
-        </span>
-      </div>
+      {/* Services */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12 text-indigo-900">Our Services</h2>
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white p-8 rounded-2xl shadow-sm">
+              <h3 className="text-xl font-semibold mb-4 text-indigo-800">
+                Professional Development Coaching
+              </h3>
+              <ul className="space-y-4 text-gray-700">
+                <li>• One-on-one, virtual 30-minute coaching sessions</li>
+                <li>• ICF Certified Physician Development Coach</li>
+                <li>• Personalized guidance and support</li>
+                <li>• No cost to healthcare providers</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Founder Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12 text-indigo-900">Meet Our Founder</h2>
+          <div className="max-w-4xl mx-auto">
+            <div className="flex flex-col md:flex-row gap-8 items-center">
+              <div className="w-full md:w-1/3">
+                <div className="relative aspect-square rounded-2xl overflow-hidden">
+                  <Image
+                    src="/founder.jpg" // Add founder's image
+                    alt="Paula Drivas"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+              <div className="w-full md:w-2/3 text-gray-700">
+                <h3 className="text-2xl font-semibold mb-4 text-indigo-800">Paula Drivas</h3>
+                <p className="mb-4">
+                  Healthcare provider and master certified physician development coach, with over 30 years of clinical and administrative experience in Emergency Medicine, Primary Care, Urgent Care, Cardiothoracic Surgery and Orthopedic Surgery.
+                </p>
+                <Link 
+                  href="/about"
+                  className="text-indigo-600 font-semibold hover:text-indigo-700"
+                >
+                  Read More →
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-indigo-900 text-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-8">Ready to Take the Next Step?</h2>
+          <p className="text-xl mb-8 text-indigo-100">
+            Schedule your free 30-minute coaching session today
+          </p>
+          <Link 
+            href="/schedule"
+            className="inline-block bg-white text-indigo-900 px-8 py-4 rounded-full text-lg font-semibold hover:bg-indigo-50 transition-colors"
+          >
+            Book Your Session
+          </Link>
+        </div>
+      </section>
     </main>
   );
 }

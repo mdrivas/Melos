@@ -1,43 +1,30 @@
 import "~/styles/globals.css";
-
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
-import Script from "next/script";
-
 import { TRPCReactProvider } from "~/trpc/react";
 import { Toaster } from "~/components/ui/toaster";
 import { AuthProvider } from "./components/AuthProvider";
 import { Suspense } from "react";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Melos",
-  description: "AI-powered playlist generation for every moment",
-  icons: [
-    { rel: "icon", url: "/favicon.ico" },
-    { rel: "apple-touch-icon", url: "/logo.png" }
-  ],
+  title: "The Provider's Coach Project",
+  description: "Empowering healthcare providers through personalized coaching",
+  icons: [{ rel: "icon", url: "/favicon.ico" }],
   openGraph: {
-    title: "Melos",
-    description: "AI-powered playlist generation for every moment",
-    url: "https://melos.ai",
-    siteName: "Melos",
+    title: "The Provider's Coach Project",
+    description: "Empowering healthcare providers through personalized coaching",
+    siteName: "The Provider's Coach Project",
     images: [
       {
-        url: "/logo.png",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Melos - AI Playlist Generator"
+        alt: "The Provider's Coach Project"
       }
     ],
     locale: "en_US",
     type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Melos",
-    description: "AI-powered playlist generation for every moment",
-    images: ["/logo.png"],
-    creator: "@yourtwitterhandle"
   },
 };
 
@@ -46,21 +33,85 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={GeistSans.variable}>
-      <head>
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8788092045781561"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
-      </head>
-      <body className="min-h-screen bg-zinc-900 text-zinc-50 overflow-x-hidden">
+      <body className="min-h-screen bg-white antialiased">
         <AuthProvider>
-          <TRPCReactProvider>
-            <Suspense>
-              {children}
-            </Suspense>
-          </TRPCReactProvider>
+          <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+            <div className="container mx-auto px-4">
+              <div className="flex items-center justify-between h-16">
+                <Link href="/" className="text-xl font-semibold text-indigo-900">
+                  The Provider's Coach Project
+                </Link>
+                <div className="hidden md:flex items-center space-x-8">
+                  <Link 
+                    href="/about" 
+                    className="px-4 py-2 text-gray-600 hover:text-indigo-600 transition-colors"
+                  >
+                    About
+                  </Link>
+                  <Link 
+                    href="/schedule"
+                    className="px-6 py-2 rounded-full bg-indigo-600 text-white hover:bg-indigo-700 transition-colors"
+                  >
+                    Schedule a Session
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </nav>
+
+          <main className="pt-16">
+            <TRPCReactProvider>
+              <Suspense>
+                {children}
+              </Suspense>
+            </TRPCReactProvider>
+          </main>
+
+          <footer className="bg-gray-50 border-t border-gray-100">
+            <div className="container mx-auto px-4 py-12">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                  <h3 className="text-lg font-semibold text-indigo-900 mb-4">
+                    The Provider's Coach Project
+                  </h3>
+                  <p className="text-gray-600">
+                    Empowering healthcare providers through personalized coaching
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-indigo-900 mb-4">Quick Links</h3>
+                  <ul className="space-y-2">
+                    <li>
+                      <Link href="/about" className="text-gray-600 hover:text-indigo-600">
+                        About Us
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/schedule" className="text-gray-600 hover:text-indigo-600">
+                        Schedule a Session
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-indigo-900 mb-4">Contact</h3>
+                  <p className="text-gray-600">
+                    Get in touch to learn more about our coaching services
+                  </p>
+                  <Link 
+                    href="/schedule" 
+                    className="inline-block mt-4 text-indigo-600 hover:text-indigo-700"
+                  >
+                    Book a Session →
+                  </Link>
+                </div>
+              </div>
+              <div className="mt-8 pt-8 border-t border-gray-200 text-center text-gray-500">
+                <p>© {new Date().getFullYear()} The Provider's Coach Project. All rights reserved.</p>
+              </div>
+            </div>
+          </footer>
+
           <Toaster />
         </AuthProvider>
       </body>

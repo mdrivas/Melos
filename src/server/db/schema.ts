@@ -139,26 +139,3 @@ export const verificationTokens = createTable(
     compoundKey: primaryKey({ columns: [vt.identifier, vt.token] }),
   }),
 );
-
-export const playlists = createTable(
-  "playlist",
-  {
-    id: serial("id").primaryKey(),
-    userId: varchar("user_id", { length: 255 })
-      .notNull()
-      .references(() => users.id),
-    prompt: text("prompt").notNull(),
-    playlistUrl: text("playlist_url").notNull(),
-    keywords: text("keywords").notNull(), // Will store JSON string of OpenAI response
-    createdAt: timestamp("created_at", { withTimezone: true })
-      .default(sql`CURRENT_TIMESTAMP`)
-      .notNull(),
-  },
-  (playlist) => ({
-    userIdIdx: index("playlist_user_id_idx").on(playlist.userId),
-  }),
-);
-
-export const playlistsRelations = relations(playlists, ({ one }) => ({
-  user: one(users, { fields: [playlists.userId], references: [users.id] }),
-}));
