@@ -3,17 +3,44 @@
 import { useEffect } from "react";
 import Script from "next/script";
 
+declare global {
+  interface Window {
+    Calendly?: {
+      initInlineWidget: (options: {
+        url: string;
+        parentElement: Element | null;
+      }) => void;
+    };
+  }
+}
+
 export default function SchedulePage() {
+  const CALENDLY_URL = 'https://calendly.com/pauladrivas';
+
   useEffect(() => {
-    // Reinitialize Calendly widget when component mounts
-    // @ts-ignore
-    if (window.Calendly) {
-      // @ts-ignore
-      window.Calendly.initInlineWidget({
-        url: 'https://calendly.com/pauladrivas',
-        parentElement: document.querySelector('.calendly-inline-widget'),
-      });
-    }
+    // Function to initialize Calendly
+    const initCalendly = () => {
+      if (window.Calendly) {
+        window.Calendly.initInlineWidget({
+          url: CALENDLY_URL,
+          parentElement: document.querySelector('.calendly-inline-widget'),
+        });
+      }
+    };
+
+    // Try to initialize immediately if Calendly is already loaded
+    initCalendly();
+
+    // Also set up a listener for when the script loads
+    const handleScriptLoad = () => {
+      initCalendly();
+    };
+
+    window.addEventListener('calendly:ready', handleScriptLoad);
+
+    return () => {
+      window.removeEventListener('calendly:ready', handleScriptLoad);
+    };
   }, []);
 
   return (
@@ -29,7 +56,7 @@ export default function SchedulePage() {
         {/* Calendly inline widget */}
         <div 
           className="calendly-inline-widget mx-auto rounded-xl overflow-hidden shadow-lg"
-          data-url="https://calendly.com/YOUR_USERNAME/30min"
+          data-url={CALENDLY_URL}
           style={{ 
             minWidth: '320px',
             height: '700px',
@@ -39,7 +66,15 @@ export default function SchedulePage() {
         
         <Script 
           src="https://assets.calendly.com/assets/external/widget.js"
-          strategy="lazyOnload"
+          strategy="afterInteractive"
+          onLoad={() => {
+            if (window.Calendly) {
+              window.Calendly.initInlineWidget({
+                url: CALENDLY_URL,
+                parentElement: document.querySelector('.calendly-inline-widget'),
+              });
+            }
+          }}
         />
       </div>
     </main>
