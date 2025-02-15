@@ -1,19 +1,21 @@
+import { Pacifico } from "next/font/google";
 import Image from "next/image";
+
+const pacifico = Pacifico({
+  weight: "400",
+  subsets: ["latin"],
+});
 
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-white">
       <div className="container mx-auto px-4 py-12">
         <h1 className="text-4xl font-bold text-indigo-900 mb-12 text-center">
-          About The Provider's Coach Project
+          A Message from our Founder…
         </h1>
         
-        {/* Founder's Story */}
         <div className="max-w-4xl mx-auto mb-16">
           <div className="prose prose-lg">
-            <h2 className="text-2xl font-semibold text-indigo-800 mb-6">
-              Meet Paula Drivas
-            </h2>
             <div className="mb-8">
               <Image
                 src="/founder.jpg"
@@ -24,51 +26,27 @@ export default function AboutPage() {
               />
             </div>
             <p className="mb-6">
-              I'm Paula Drivas, a healthcare provider and master certified physician development coach, 
-              with over 30 years of clinical and administrative experience in Emergency Medicine, 
-              Primary Care, Urgent Care, Cardiothoracic Surgery and Orthopedic Surgery.
+              Throughout my medical career, I have witnessed firsthand the immense dedication and sacrifices that healthcare providers make - often at the expense of our own well-being. Divorce, depression, anxiety, imposter syndrome, substance abuse, alienation, and guilt are but a few of the consequences many face.
             </p>
             <p className="mb-6">
-              Throughout my career, coaching was either nonexistent or not well publicized, 
-              and I didn't realize how transformative it could be. Like many in the medical field, 
-              I dedicated myself to patient care, often at the expense of my own well-being.
+              We endure perpetual high stress levels dealing with critical patients and complex diagnoses. We endure compassion fatigue and emotional exhaustion, witnessing chronic patient suffering. We endure the stigmas around seeking help and the perception that healthcare providers should always be strong and capable. We endure long working hours, demanding schedules and toxic work environments that contribute to burnout and lack of personal time.
             </p>
             <p className="mb-6">
-              But everything changed when I became the victim of bullying and gaslighting in the workplace. 
-              During this difficult time as I searched for support and answers, I turned to a physician 
-              development coach- and it was lifechanging. My coach helped me reconnect with my values, 
-              take a 360 degree view of my situation, and recognize that I held the answers. 
-              I just needed the right support to bring them to light.
+              No longer wanting to accept these behaviors as our collective reality, I searched for ways to change the culture of medicine, to help heal the profession that I still love and so many have dedicated their lives to. Fueled by my desire for change, I trained with the Physician Coaching Institute and became a Master Certified Physician Coach. Throughout this journey I have met and worked with so many fascinating, caring and interesting individuals who share my passion for healing. Some chose to embark on the entrepreneurial track and formed for-profit coaching businesses. Their personalized coaching programs offer deep experiences tailored to the client's needs. Other colleagues chose to partner with their institutions and offer coaching as part of their Wellness programs.
             </p>
             <p className="mb-6">
-              That experience inspired me to give back. I wanted to help other healthcare providers 
-              struggling to make career related decisions. To make this vision a reality, I trained 
-              with the Physician Coaching Institute and became a Master Certified Physician Coach.
+              My journey led me to create The Provider's Coach Project, a nonprofit 501(c)3 organization offering no-cost coaching to healthcare professionals seeking guidance, clarity and support throughout their career. I wanted to remove barriers to coaching and make it accessible to everyone. You may find the answer to a question you've been mulling over after just one visit. Or you may choose to dive deeper on a topic and visit more often. Either way, my hope is that The Provider's Coach Project will help guide you to feel empowered, set goals, take action, gain clarity and live with intention, both personally and professionally.
             </p>
-            <p>
-              Now through The Provider's Coach Project, I offer no-cost coaching to healthcare 
-              professionals who need guidance, clarity and support. My goal is simple: to help heal 
-              the professional culture of medicine and empower providers to thrive-both personally 
-              and professionally.
+            <p className="mb-6">
+              Life begins with that first breath!
+            </p>
+            <p className="mb-6">
+              I invite you to take a deep breath and choose to begin your coaching journey today!
+            </p>
+            <p className={`text-2xl text-black  ${pacifico.className}`}>
+              Paula
             </p>
           </div>
-        </div>
-
-        {/* Credentials Section */}
-        <div className="bg-gray-50 rounded-2xl p-8 max-w-4xl mx-auto">
-          <h2 className="text-2xl font-semibold text-indigo-800 mb-6">
-            Credentials & Experience
-          </h2>
-          <ul className="space-y-4 text-gray-700">
-            <li>• Master Certified Physician Coach</li>
-            <li>• ICF Certified Coach</li>
-            <li>• 30+ Years Clinical Experience</li>
-            <li>• Emergency Medicine</li>
-            <li>• Primary Care</li>
-            <li>• Urgent Care</li>
-            <li>• Cardiothoracic Surgery</li>
-            <li>• Orthopedic Surgery</li>
-          </ul>
         </div>
       </div>
     </main>
