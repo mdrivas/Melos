@@ -139,3 +139,25 @@ export const verificationTokens = createTable(
     compoundKey: primaryKey({ columns: [vt.identifier, vt.token] }),
   }),
 );
+
+export const signedAgreements = createTable(
+  "signed_agreement",
+  {
+    id: varchar("id", { length: 255 })
+      .notNull()
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    clientName: varchar("client_name", { length: 255 }).notNull(),
+    clientEmail: varchar("client_email", { length: 255 }).notNull(),
+    signedDate: timestamp("signed_date", { withTimezone: true })
+      .default(sql`CURRENT_TIMESTAMP`)
+      .notNull(),
+    agreementText: text("agreement_text").notNull(), // Store the version of agreement they signed
+  },
+  (table) => ({
+    emailIndex: index("email_idx").on(table.clientEmail),
+  })
+);
+
+export type SignedAgreement = InferSelectModel<typeof signedAgreements>;
+export type NewSignedAgreement = InferInsertModel<typeof signedAgreements>;
