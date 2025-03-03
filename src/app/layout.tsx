@@ -49,6 +49,12 @@ export default function RootLayout({
                     About
                   </Link>
                   <Link 
+                    href="/#contact"
+                    className="px-4 py-2 text-gray-600 hover:text-blue-600 transition-colors"
+                  >
+                    Contact Us
+                  </Link>
+                  <Link 
                     href="/schedule"
                     className="px-6 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors"
                   >

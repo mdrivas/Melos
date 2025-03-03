@@ -282,7 +282,7 @@ export default async function Home() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 bg-gradient-to-b from-blue-50 to-blue-100">
+      <section id="contact" className="py-20 bg-gradient-to-b from-blue-50 to-blue-100 scroll-mt-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-12 text-blue-900">Contact Us</h2>
