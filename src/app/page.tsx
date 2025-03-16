@@ -26,13 +26,13 @@ export default async function Home() {
             The Provider's Coach Project
           </h1>
           <p className="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto mb-8">
-           <span className="font-bold">No-Cost</span> Coaching for <span className="font-bold">Healthcare Providers</span> by <span className="font-bold">Healthcare Providers</span>—Because You Deserve Support, Too.
+           No-Cost Coaching for Healthcare Providers by Healthcare Providers
           </p>
           <Link 
             href="/schedule"
             className="inline-block bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-700 transition-colors"
           >
-            Book a No-Cost Coaching Session
+            Book a Session
           </Link>
         </div>
       </section>
@@ -46,7 +46,7 @@ export default async function Home() {
           <div className="max-w-3xl mx-auto">
             <div className="text-xl text-gray-700 leading-relaxed space-y-6">
               <p className="mb-6">
-                <span className="font-semibold text-blue-900">Healthcare professionals are struggling</span> to stay happy at work. Many are exhausted or facing burn out. Others are navigating work/life balance or considering career changes.
+                <span className="font-semibold text-blue-900">Healthcare professionals are struggling</span> to stay happy at work. Many are exhausted or facing burn out. Others are navigating work-life balance or considering career changes.
               </p>
               
               <p className="mb-6">
@@ -90,7 +90,7 @@ export default async function Home() {
               <div className="relative bg-white rounded-2xl p-6 shadow-lg max-w-2xl transform hover:-translate-y-1 transition-transform duration-300">
                 <div className="absolute -left-3 top-1/2 w-6 h-6 bg-white transform rotate-45 -translate-y-1/2" />
                 <p className="text-lg text-gray-700 italic">
-                  "How can I create a better work/life balance without feeling guilty or compromising my career?"
+                  "How can I create a better work-life balance without feeling guilty or compromising my career?"
                 </p>
               </div>
             </div>
@@ -119,7 +119,7 @@ export default async function Home() {
       </section>
 
       {/* Coaching Philosophy Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-blue-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-blue-900">
             Our Coaching Philosophy
@@ -129,71 +129,59 @@ export default async function Home() {
               Physician coaching is a relationship between two medical professionals—a conversation among individuals with shared experiences. Our goal is to create a <span className="font-semibold text-blue-900">sacred and safe space</span> for exploration and self-discovery.
             </p>
             <p className="mt-6">
-              Our work is <span className="font-semibold text-blue-900">client centered, action oriented and forward looking</span>. No matter what is happening in your life, we see you as whole and complete. We have faith in you and your ability to align with your values, rediscover your purpose and live with intention.
+              Our work is <span className="font-semibold text-blue-900">client-centered, action-oriented, and forward-looking</span>. No matter what is happening in your life, we see you as whole and complete. We have faith in you and your ability to align with your values, rediscover your purpose, and live with intention.
             </p>
           </div>
         </div>
       </section>
 
       {/* How It Works & Who We Coach Section */}
-      <section className="py-24 bg-gradient-to-b from-blue-50 to-blue-100">
+      <section className="py-24 bg-white">
         <div className="container mx-auto px-6 md:px-12 lg:px-16">
-          <div className="max-w-4xl mx-auto space-y-12">
-            
+          <div className="max-w-4xl mx-auto space-y-16">
             {/* How It Works */}
-            <div className="bg-white rounded-3xl p-10 shadow-xl">
+            <div>
               <h2 className="text-3xl font-bold text-blue-900 text-center mb-8">How It Works</h2>
-              <div className="space-y-6 flex flex-col items-center">
+              <ul className="space-y-4 max-w-2xl mx-auto">
                 {[
                   "30-minute virtual coaching sessions via Zoom",
                   "No commitment—schedule sessions as needed",
                   "Judgment-free, confidential support",
                   "Physician coaches certified by the International Coaching Federation"
-                ].map((step, index) => (
-                  <div key={index} className="flex items-center space-x-4 w-full max-w-xl">
-                    <div className="h-10 w-10 flex items-center justify-center bg-blue-600 text-white text-lg font-semibold rounded-full shadow-md">
-                      {index + 1}
-                    </div>
-                    <p className="text-lg text-gray-700">{step}</p>
-                  </div>
+                ].map((step) => (
+                  <li key={step} className="flex items-center space-x-3">
+                    <span className="text-blue-600 text-2xl">•</span>
+                    <span className="text-lg text-gray-700">{step}</span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
 
-            {/* What Coaching Can Help With */}
-            <div className="bg-white rounded-3xl p-8 shadow-xl">
+            {/* Who We Coach */}
+            <div>
               <h2 className="text-3xl font-bold text-blue-900 text-center mb-6">Who We Coach</h2>
-              <p className="text-lg text-gray-700 text-center mb-6">
+              <p className="text-lg text-gray-700 text-center mb-8">
                 We support physicians, physician associates, and nurse practitioners at any career stage.
               </p>
 
-              <h3 className="text-2xl font-semibold text-blue-900 text-center mb-4">What Coaching Can Help With</h3>
+              <h3 className="text-2xl font-semibold text-blue-900 text-center mb-6">What Coaching Can Help With</h3>
               
-              <div className="space-y-4 flex flex-col items-center">
+              <ul className="space-y-4 max-w-2xl mx-auto">
                 {[
                   "Feeling overworked, exhausted, or disconnected from your purpose",
                   "Setting boundaries and reclaiming personal time",
                   "Exploring career transitions and leadership opportunities",
                   "Navigating workplace stress, gaslighting, or toxic environments",
                   "Rediscovering fulfillment in medicine"
-                ].map((item, index) => (
-                  <div key={index} className="flex items-center bg-blue-50 p-4 rounded-lg shadow-md w-full max-w-xl">
-                    <div className="h-8 w-8 flex items-center justify-center bg-green-600 text-white text-sm font-bold rounded-lg mr-3">
-                      {index + 1}
-                    </div>
-                    <p className="text-md text-gray-800">{item}</p>
-                  </div>
+                ].map((item) => (
+                  <li key={item} className="flex items-start space-x-3">
+                    <svg className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-lg text-gray-700">{item}</span>
+                  </li>
                 ))}
-              </div>
-
-              <div className="mt-8 text-center">
-                <Link 
-                  href="/schedule"
-                  className="inline-block bg-blue-600 text-white px-6 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-blue-700 transition-transform transform hover:scale-105"
-                >
-                  Book a No-Cost Coaching Session →
-                </Link>
-              </div>
+              </ul>
             </div>
           </div>
         </div>
@@ -270,13 +258,6 @@ export default async function Home() {
                 </div>
               ))}
             </div>
-            
-            <Link 
-              href="/support"
-              className="inline-block bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-700 transition-colors"
-            >
-              Support Our Mission →
-            </Link>
           </div>
         </div>
       </section>
@@ -287,11 +268,7 @@ export default async function Home() {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-12 text-blue-900">Contact Us</h2>
             
-            <div className="grid md:grid-cols-3 gap-8 mb-12">
-              <div className="flex flex-col items-center">
-                <div className="text-3xl mb-4">📍</div>
-                <p className="text-gray-700">Based in California<br />Serving Providers Nationwide</p>
-              </div>
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
               <div className="flex flex-col items-center">
                 <div className="text-3xl mb-4">📩</div>
                 <a href="mailto:info@providerscoachproject.org" className="text-blue-600 hover:text-blue-800 transition-colors">
@@ -312,7 +289,7 @@ export default async function Home() {
               href="/schedule"
               className="inline-block bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-700 transition-colors"
             >
-              Book a No-Cost Coaching Session →
+              Book a Session →
             </Link>
           </div>
         </div>
