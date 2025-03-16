@@ -49,6 +49,18 @@ export default function RootLayout({
                     About
                   </Link>
                   <Link 
+                    href="/faq" 
+                    className="px-4 py-2 text-gray-600 hover:text-blue-600 transition-colors"
+                  >
+                    FAQ
+                  </Link>
+                  <Link 
+                    href="/resources" 
+                    className="px-4 py-2 text-gray-600 hover:text-blue-600 transition-colors"
+                  >
+                    Resources
+                  </Link>
+                  <Link 
                     href="/#contact"
                     className="px-4 py-2 text-gray-600 hover:text-blue-600 transition-colors"
                   >
@@ -83,6 +95,9 @@ export default function RootLayout({
                   <p className="text-gray-600">
                     Empowering healthcare providers through personalized coaching
                   </p>
+                  <p className="text-gray-600 mt-2">
+                    Based in California • Serving Providers Nationwide
+                  </p>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-blue-900 mb-4">Quick Links</h3>
@@ -114,6 +129,12 @@ export default function RootLayout({
               </div>
               <div className="mt-8 pt-8 border-t border-gray-200 text-center text-gray-500">
                 <p>© {new Date().getFullYear()} The Provider's Coach Project. All rights reserved.</p>
+              </div>
+              <div className="text-sm text-gray-500 mt-4">
+                <p>
+                  Resources and links are provided for informational purposes only. 
+                  Inclusion does not constitute endorsement or financial relationship.
+                </p>
               </div>
             </div>
           </footer>
