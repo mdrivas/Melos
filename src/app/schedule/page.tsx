@@ -5,8 +5,8 @@ import Script from 'next/script';
 import { CoachingAgreement } from '~/components/CoachingAgreement';
 import { api } from "~/trpc/react";
 
-const CALENDLY_URL = 'https://calendly.com/pauladrivas';
-
+const CALENDLY_URL = 'https://calendly.com/pcp-coaches/my-coaching-session'
+;
 // Define proper Calendly types
 declare global {
   interface Window {
