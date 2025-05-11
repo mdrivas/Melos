@@ -36,6 +36,38 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Board of Directors Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-blue-900">
+            Board of Directors
+          </h2>
+          <div className="flex flex-col gap-12 max-w-4xl mx-auto">
+           
+            {/* Gita Mehta */}
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="w-48 h-48 relative rounded-full overflow-hidden flex-shrink-0 border-4 border-blue-200">
+                <Image
+                  src="/gita.jpg"
+                  alt="Gita Mehta, MD, FACP"
+                  fill
+                  className="object-cover object-[0_20%]"
+                />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-blue-900 mb-2">Gita Mehta, MD, FACP</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  Gita Mehta, MD, FACP, is Emeritus Professor at University of California San Diego (UCSD) in the Department of Medicine. She served as a clinician-educator in the Division of General Internal Medicine for over 25 years. With a continued strong commitment to the profession and medical education, she sought and received a Fulbright Grant to India in 2018, where she worked with local faculty to create a professionalism program for learners in the participating medical institution.
+                </p>
+                <p className="text-gray-700 leading-relaxed mt-2">
+                  She is faculty at the Academy of Healthcare Communication (achonline.org) through which she continues to participate in mentoring and guiding trainees and delivering external-facing workshops. She is a certified Health and Well-being coach, and a physician development coach. She now provides coaching for faculty physicians at UCSD and continues to develop and present communication and wellness workshops for undergraduate students and faculty physicians.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Founder's Message Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
@@ -47,7 +79,7 @@ export default function AboutPage() {
             <div className="prose prose-lg">
               <div className="mb-8">
                 <Image
-                  src="/founder.jpg"
+                  src="/PaulaFounder.png"
                   alt="Paula Drivas"
                   width={400}
                   height={400}
