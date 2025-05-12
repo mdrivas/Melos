@@ -161,3 +161,25 @@ export const signedAgreements = createTable(
 
 export type SignedAgreement = InferSelectModel<typeof signedAgreements>;
 export type NewSignedAgreement = InferInsertModel<typeof signedAgreements>;
+
+export const waitlistEntries = createTable(
+  "waitlist_entries",
+  {
+    id: varchar("id", { length: 255 })
+      .notNull()
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    name: varchar("name", { length: 255 }).notNull(),
+    email: varchar("email", { length: 255 }).notNull(),
+    providerRole: varchar("provider_role", { length: 100 }),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .default(sql`CURRENT_TIMESTAMP`)
+      .notNull(),
+  },
+  (table) => ({
+    emailIndex: index("waitlist_email_idx").on(table.email),
+  })
+);
+
+export type WaitlistEntry = InferSelectModel<typeof waitlistEntries>;
+export type NewWaitlistEntry = InferInsertModel<typeof waitlistEntries>;
