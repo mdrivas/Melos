@@ -67,7 +67,7 @@ export default function RootLayout({
                     Contact Us
                   </Link>
                   <Link 
-                    href="/schedule"
+                    href="/comingSoon"
                     className="px-6 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors"
                   >
                     Schedule a Session
@@ -108,7 +108,7 @@ export default function RootLayout({
                       </Link>
                     </li>
                     <li>
-                      <Link href="/schedule" className="text-gray-600 hover:text-blue-600">
+                      <Link href="/comingSoon" className="text-gray-600 hover:text-blue-600">
                         Schedule a Session
                       </Link>
                     </li>
@@ -120,7 +120,7 @@ export default function RootLayout({
                     Get in touch to learn more about our coaching services
                   </p>
                   <Link 
-                    href="/schedule" 
+                    href="/comingSoon" 
                     className="inline-block mt-4 text-blue-600 hover:text-blue-700"
                   >
                     Book a Session →
