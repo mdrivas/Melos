@@ -99,7 +99,7 @@ export default function AboutPage() {
                 My journey led me to create The Provider's Coach Project, a nonprofit 501(c)3 organization offering no-cost coaching to healthcare professionals seeking guidance, clarity and support throughout their career. I wanted to remove barriers to coaching and make it accessible to everyone. You may find the answer to a question you've been mulling over after just one visit. Or you may choose to dive deeper on a topic and visit more often. Either way, my hope is that The Provider's Coach Project supports you to feel empowered, set goals, take action, gain clarity and live with intention, both personally and professionally.
               </p>
               <p className="mb-6">
-                Life begins with that first breath!
+                Life begins with that first breath
               </p>
               <p className="mb-6">
                 I invite you to take a deep breath and choose to begin your coaching journey today!
