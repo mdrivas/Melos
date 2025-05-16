@@ -15,7 +15,7 @@ export const waitlistRouter = createTRPCRouter({
       return ctx.db.insert(waitlistEntries).values({
         name: input.name,
         email: input.email,
-        providerRole: input.providerRole || null,
+        providerRole: input.providerRole ?? null,
       });
     }),
 }); 
