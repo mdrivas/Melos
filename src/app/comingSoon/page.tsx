@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 
 const PROVIDER_ROLES = [
   "Physician",
-  "Physician Assistant",
+  "Physician Associate",
   "Nurse Practitioner",
   "Other"
 ];
