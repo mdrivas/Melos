@@ -1,0 +1,102 @@
+name: Deploy to Vercel
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  # Define all environment variables in groups for better organization
+  VERCEL_VARS: >-
+    VERCEL_ORG_ID
+    VERCEL_PROJECT_ID
+    VERCEL_TOKEN
+  
+  AUTH_VARS: >-
+    DATABASE_URL
+    NEXTAUTH_SECRET
+    NEXTAUTH_URL
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      # Map all secrets to environment variables
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+      NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel@latest
+
+      - name: Debug Environment Variables
+        run: |
+          echo "Checking required environment variables..."
+          missing=0
+          
+          # Function to check env var
+          check_env() {
+            local var_name=$1
+            if [ -z "${!var_name}" ]; then
+              echo "❌ $var_name is missing"
+              return 1
+            fi
+            return 0
+          }
+          
+          # Check all required variables
+          for var in $VERCEL_VARS $AUTH_VARS; do
+            check_env "$var" || missing=1
+          done
+          
+          if [ $missing -eq 1 ]; then 
+            echo "❌ Some required variables are missing"
+            exit 1
+          fi
+          echo "✅ All required environment variables are set"
+
+      - name: Prepare Environment Variables
+        id: prep
+        run: |
+          # Function to generate env flags
+          generate_env_flags() {
+            local prefix=$1
+            local vars=$2
+            local flags=""
+            for var in $vars; do
+              flags="$flags --$prefix $var=\"\$$var\""
+            done
+            echo "$flags"
+          }
+          
+          # Generate flags for all variable groups
+          ALL_VARS="VERCEL_ORG_ID VERCEL_PROJECT_ID VERCEL_TOKEN DATABASE_URL NEXTAUTH_SECRET NEXTAUTH_URL"
+          BUILD_FLAGS=$(generate_env_flags "build-env" "$ALL_VARS")
+          ENV_FLAGS=$(generate_env_flags "env" "$ALL_VARS")
+          
+          # Save to output
+          echo "build_flags=$BUILD_FLAGS" >> $GITHUB_OUTPUT
+          echo "env_flags=$ENV_FLAGS" >> $GITHUB_OUTPUT
+
+      - name: Deploy to Vercel (Production)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          vercel deploy --prod --yes \
+            ${{ steps.prep.outputs.build_flags }} \
+            ${{ steps.prep.outputs.env_flags }} \
+            --token="$VERCEL_TOKEN"
+
+      - name: Create Preview Deployment
+        if: github.event_name == 'pull_request'
+        run: |
+          vercel deploy --yes \
+            ${{ steps.prep.outputs.build_flags }} \
+            ${{ steps.prep.outputs.env_flags }} \
+            --token="$VERCEL_TOKEN"
