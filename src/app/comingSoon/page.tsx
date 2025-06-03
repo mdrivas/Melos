@@ -3,6 +3,13 @@
 import { useState } from 'react';
 import { api } from "~/trpc/react";
 import { useRouter } from "next/navigation";
+import { Merriweather } from "next/font/google";
+
+const merriweather = Merriweather({
+  weight: ['300', '400', '700', '900'],
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 const PROVIDER_ROLES = [
   "Physician",
@@ -70,16 +77,16 @@ export default function ComingSoonPage() {
 
   if (showSuccess) {
     return (
-      <main className="min-h-screen bg-[#fff8f0] py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Welcome Aboard!</h2>
-            <p className="text-gray-700 text-lg mb-6">
+      <main className="min-h-screen bg-gradient-to-b from-[#D4E6FF] via-[#E8F1FF] to-white pt-24">
+        <div className="container mx-auto px-4 min-h-[calc(100vh-6rem)] flex items-center">
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className={`text-5xl text-[#2E3142] mb-6 ${merriweather.className}`}>Welcome Aboard!</h2>
+            <p className="text-xl text-[#2E3142]/80 mb-8">
               Thanks for joining our waitlist! We'll reach out as soon as coaching sessions are available.
             </p>
             <button
               onClick={handleClose}
-              className="w-full bg-[#ffd481] text-gray-800 py-3 px-6 rounded-xl text-lg font-semibold transition-colors"
+              className="inline-block px-10 py-4 bg-[#526B61] text-white text-xl font-sans rounded-full hover:bg-[#3A5548] transition-all duration-300 ease-in-out hover:shadow-lg hover:transform hover:-translate-y-0.5"
             >
               Return Home
             </button>
@@ -90,29 +97,29 @@ export default function ComingSoonPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#fff8f0] py-20">
-      <div className="container mx-auto px-4">
-        <div className="max-w-2xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+    <main className="min-h-screen bg-[#FFF8E7]">
+      <div className="container mx-auto px-4 min-h-[calc(100vh-6rem)] flex items-center">
+        <div className="max-w-4xl mx-auto py-24">
+          <div className="text-center mb-12">
+            <h2 className={`text-5xl lg:text-6xl text-[#2E3142] mb-6 ${merriweather.className}`}>
               Join the Waitlist
             </h2>
-            <p className="text-gray-700 text-lg leading-relaxed">
+            <p className="text-xl text-[#2E3142]/80 leading-relaxed max-w-3xl mx-auto">
               Coaching sessions are coming soon. Secure your spot to start building a healthier, more fulfilling career.
             </p>
           </div>
           
-          <div className="max-w-lg mx-auto">
-            <form onSubmit={handleSubmit} className="space-y-5">
+          <div className="max-w-2xl mx-auto bg-white/80 rounded-2xl p-8 shadow-lg">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <input
                   type="text"
                   id="name"
                   value={formData.name}
                   onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                  className={`mt-1 block w-full rounded-xl px-4 py-2.5 bg-white border ${
+                  className={`mt-1 block w-full rounded-xl px-6 py-4 bg-white border text-lg ${
                     errors.name ? 'border-red-500' : 'border-gray-300'
-                  } shadow-sm focus:border-blue-500 focus:ring-blue-500`}
+                  } shadow-sm focus:border-[#526B61] focus:ring-[#526B61]`}
                   placeholder="Your Name"
                 />
                 {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name}</p>}
@@ -124,23 +131,23 @@ export default function ComingSoonPage() {
                   id="email"
                   value={formData.email}
                   onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                  className={`mt-1 block w-full rounded-xl px-4 py-2.5 bg-white border ${
+                  className={`mt-1 block w-full rounded-xl px-6 py-4 bg-white border text-lg ${
                     errors.email ? 'border-red-500' : 'border-gray-300'
-                  } shadow-sm focus:border-blue-500 focus:ring-blue-500`}
+                  } shadow-sm focus:border-[#526B61] focus:ring-[#526B61]`}
                   placeholder="name@example.com"
                 />
                 {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
               </div>
 
               <div className="space-y-3">
-                <label htmlFor="providerRole" className="block text-sm font-semibold text-gray-700 mb-1">
-                  Provider Role <span className="text-gray-500 font-normal">(optional)</span>
+                <label htmlFor="providerRole" className="block text-lg font-medium text-[#2E3142] mb-2">
+                  Provider Role <span className="text-[#2E3142]/60 font-normal">(optional)</span>
                 </label>
                 <select
                   id="providerRole"
                   value={formData.providerRole}
                   onChange={(e) => setFormData(prev => ({ ...prev, providerRole: e.target.value, customRole: e.target.value !== 'Other' ? '' : prev.customRole }))}
-                  className="mt-1 block w-full rounded-xl px-4 py-2.5 bg-white border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                  className="block w-full rounded-xl px-6 py-4 bg-white border border-gray-300 text-lg shadow-sm focus:border-[#526B61] focus:ring-[#526B61]"
                 >
                   <option value="">Select your role</option>
                   {PROVIDER_ROLES.map(role => (
@@ -154,7 +161,7 @@ export default function ComingSoonPage() {
                     id="customRole"
                     value={formData.customRole}
                     onChange={(e) => setFormData(prev => ({ ...prev, customRole: e.target.value }))}
-                    className="block w-full rounded-xl px-4 py-2.5 bg-white border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    className="block w-full rounded-xl px-6 py-4 bg-white border border-gray-300 text-lg shadow-sm focus:border-[#526B61] focus:ring-[#526B61]"
                     placeholder="Please specify your role"
                   />
                 )}
@@ -167,7 +174,7 @@ export default function ComingSoonPage() {
               <button
                 type="submit"
                 disabled={createWaitlistEntry.isPending}
-                className="w-full bg-[#ffd481] text-gray-900 py-3 px-6 rounded-xl text-lg font-semibold hover:bg-[#ffca5e] transition-colors disabled:opacity-50 mt-4"
+                className="w-full bg-[#526B61] text-white py-4 px-6 rounded-full text-xl font-medium hover:bg-[#3A5548] transition-all duration-300 ease-in-out hover:shadow-lg hover:transform hover:-translate-y-0.5 disabled:opacity-50 mt-6"
               >
                 {createWaitlistEntry.isPending ? 'Joining...' : "I'm in!"}
               </button>

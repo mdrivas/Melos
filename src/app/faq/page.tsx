@@ -1,3 +1,17 @@
+'use client';
+
+import { Merriweather } from "next/font/google";
+import { CirclePair } from "~/components/ui/circle-pair";
+import { CircleTriplet } from "~/components/ui/circle-triplet";
+import * as Accordion from '@radix-ui/react-accordion';
+import { ChevronDownIcon } from '@radix-ui/react-icons';
+
+const merriweather = Merriweather({
+  weight: ['300', '400', '700', '900'],
+  subsets: ['latin'],
+  display: 'swap',
+});
+
 export default function FAQPage() {
   const faqs = [
     {
@@ -27,42 +41,69 @@ export default function FAQPage() {
   ];
 
   return (
-    <>
-      <section className="py-20 bg-gradient-to-b from-blue-100 to-blue-50">
+    <main className="min-h-screen bg-white pt-24">
+      <section className="py-20 bg-gradient-to-b from-[#D4E6FF] via-[#E8F1FF] to-white relative overflow-hidden">
+        {/* Circle Decorations */}
+        <div className="absolute top-14 right-16">
+          <CircleTriplet color="bg-[#E8F1FF]" />
+        </div>
+        <div className="absolute bottom-20 left-16">
+          <CirclePair color="bg-[#E8F1FF]" />
+        </div>
+
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-blue-900 text-center mb-16">
+          <h1 className={`text-5xl lg:text-6xl tracking-tight text-[#2E3142] text-center mb-16 ${merriweather.className}`}>
             Frequently Asked Questions
           </h1>
 
-          <div className="max-w-4xl mx-auto">
-            {faqs.map((faq, index) => (
-              <div 
-                key={index} 
-                className="mb-8 p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow"
-              >
-                <h2 className="text-xl font-semibold text-blue-900 mb-3">
-                  {faq.question}
-                </h2>
-                <p className="text-gray-600 leading-relaxed">
-                  {faq.answer}
-                </p>
-              </div>
-            ))}
+          <div className="max-w-6xl mx-auto">
+            <Accordion.Root
+              type="single"
+              collapsible
+              className="space-y-6"
+            >
+              {faqs.map((faq, index) => (
+                <Accordion.Item
+                  key={index}
+                  value={`item-${index}`}
+                  className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 "
+                >
+                  <Accordion.Header>
+                    <Accordion.Trigger className="group flex items-center justify-between w-full px-8 py-6 text-left">
+                      <span className={`text-xl lg:text-2xl text-[#2E3142] font-medium font-sans`}>
+                        {faq.question}
+                      </span>
+                      <ChevronDownIcon
+                        className="h-6 w-6 text-[#2E3142] transition-transform duration-300 group-data-[state=open]:rotate-180"
+                        aria-hidden
+                      />
+                    </Accordion.Trigger>
+                  </Accordion.Header>
+                  <Accordion.Content className="overflow-hidden transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+                    <div className="px-8 pb-6">
+                      <p className="text-xl leading-[1.8] text-[#2E3142]">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  </Accordion.Content>
+                </Accordion.Item>
+              ))}
+            </Accordion.Root>
           </div>
 
-          <div className="text-center mt-12">
-            <p className="text-gray-600 mb-6">
+          <div className="text-center mt-16">
+            <p className="text-xl text-[#2E3142] mb-8">
               Still have questions? We're here to help.
             </p>
             <a 
-              href="/schedule" 
-              className="inline-block bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-700 transition-colors"
+              href="/contact" 
+              className="inline-block px-10 py-4 bg-[#526B61] text-white text-xl font-sans rounded-full hover:bg-[#3A5548] transition-all duration-300 ease-in-out hover:shadow-lg hover:transform hover:-translate-y-0.5"
             >
-              Schedule a Session →
+              Contact Us
             </a>
           </div>
         </div>
       </section>
-    </>
+    </main>
   );
 } 

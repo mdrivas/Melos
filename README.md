@@ -56,3 +56,27 @@ Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/ver
 1. Shadcn UI components are located in `src/components/ui`
 2. Use npx shadcn-ui@latest add {component} to add a new component it will automatically update the `src/components/ui/index.tsx` file
 3. Reference the website for the component you want to use here: https://ui.shadcn.com/
+
+
+To do: 
+add  more circles to the other sections 
+- change hte blue color to the darker blue of the quotes 
+look at title change for pain points 
+
+- make testimonia containers blue and test white or black 
+- make support options not opaque and change ot the darker vlue. =
+- make books a session button bigger on footer ext size. 
+- make blue gradient longer down one section 
+
+
+
+form 
+- take out provider role lable and change hte placeholder to 'provider title' 
+- make the provider role required 
+
+
+- dark blue font instead of the green 
+
+Hero
+- one line hero subtext. 
+
