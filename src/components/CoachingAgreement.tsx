@@ -47,7 +47,7 @@ export function CoachingAgreement({ onSign }: {
         <h4 className="text-xl font-semibold text-blue-900 mb-4">2. Coaching Sessions</h4>
         <p className="mb-6">
           - Sessions will be conducted virtually via Zoom.<br />
-          - Each session will last approximately 30 minutes.<br />
+          - Each session will last approximately 45 minutes.<br />
           - The Client may schedule sessions as needed.
         </p>
 
