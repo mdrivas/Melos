@@ -3,10 +3,9 @@
 import Image from "next/image";
 import { BsCameraVideoFill } from "react-icons/bs";
 import { MdOutlineSchedule } from "react-icons/md";
-import { FaUserMd, FaStethoscope, FaUserNurse, FaUserCog, FaHospitalUser } from "react-icons/fa";
+import { FaUserMd, FaStethoscope, FaUserNurse, FaHospitalUser } from "react-icons/fa";
 import { Merriweather } from "next/font/google";
 import { CirclePair } from "~/components/ui/circle-pair";
-import { CircleTriplet } from "~/components/ui/circle-triplet";
 
 const merriweather = Merriweather({
   weight: ['300', '400', '700', '900'],

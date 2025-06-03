@@ -5,7 +5,6 @@ import { CirclePair } from "~/components/ui/circle-pair";
 import { CircleTriplet } from "~/components/ui/circle-triplet";
 import * as Accordion from '@radix-ui/react-accordion';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
-import { cn } from "~/lib/utils";
 
 const merriweather = Merriweather({
   weight: ['300', '400', '700', '900'],

@@ -40,6 +40,19 @@ export default function PainPointsSection() {
     "My workplace is toxic—but I don't know if I should leave or try to change my environment—what should I do?"
   ];
 
+  // Create individual refs and inView states for each quote
+  const ref1 = useRef(null);
+  const ref2 = useRef(null);
+  const ref3 = useRef(null);
+  const ref4 = useRef(null);
+  const refs = [ref1, ref2, ref3, ref4];
+
+  const isInView1 = useInView(ref1, { once: true, margin: "-100px" });
+  const isInView2 = useInView(ref2, { once: true, margin: "-100px" });
+  const isInView3 = useInView(ref3, { once: true, margin: "-100px" });
+  const isInView4 = useInView(ref4, { once: true, margin: "-100px" });
+  const inViewStates = [isInView1, isInView2, isInView3, isInView4];
+
   return (
     <section className="py-20 bg-gradient-to-b from-[#C4D6ED] to-[#C4D6ED] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative">
@@ -60,45 +73,40 @@ export default function PainPointsSection() {
 
         {/* Quotes Container */}
         <div className="max-w-5xl mx-auto space-y-12">
-          {quotes.map((quote, index) => {
-            const containerRef = useRef(null);
-            const isInView = useInView(containerRef, { once: true, margin: "-100px" });
-            
-            return (
-              <motion.div 
-                key={index}
-                ref={containerRef}
-                className={`flex items-center gap-6 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
-                initial={animationConfig.initial}
-                animate={isInView ? animationConfig.animate : animationConfig.initial}
-                transition={{
-                  duration: defaultAnimationSettings.duration,
-                  delay: index * defaultAnimationSettings.delay,
-                  ease: "easeOut"
-                }}
-              >
-                {/* Doctor Icon */}
-                <div className="relative w-20 h-20 flex-shrink-0">
-                  <Image
-                    src="/icons/doctor-male-icon.png"
-                    alt="Doctor Icon"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
+          {quotes.map((quote, index) => (
+            <motion.div 
+              key={index}
+              ref={refs[index]}
+              className={`flex items-center gap-6 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
+              initial={animationConfig.initial}
+              animate={inViewStates[index] ? animationConfig.animate : animationConfig.initial}
+              transition={{
+                duration: defaultAnimationSettings.duration,
+                delay: index * defaultAnimationSettings.delay,
+                ease: "easeOut"
+              }}
+            >
+              {/* Doctor Icon */}
+              <div className="relative w-20 h-20 flex-shrink-0">
+                <Image
+                  src="/icons/doctor-male-icon.png"
+                  alt="Doctor Icon"
+                  fill
+                  className="object-contain"
+                />
+              </div>
 
-                {/* Quote Bubble */}
-                <div className={`flex-1 relative bg-white rounded-2xl p-6 shadow-lg transform hover:-translate-y-1 transition-all duration-300
-                  ${index % 2 === 0 ? 'rounded-l-2xl' : 'rounded-r-2xl'}`}
-                >
-                  <div className={`absolute ${index % 2 === 0 ? '-left-3' : '-right-3'} top-1/2 w-6 h-6 bg-white transform rotate-45 -translate-y-1/2`} />
-                  <p className="text-2xl text-[#2E3142] leading-relaxed font-sans">
-                    "{quote}"
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
+              {/* Quote Bubble */}
+              <div className={`flex-1 relative bg-white rounded-2xl p-6 shadow-lg transform hover:-translate-y-1 transition-all duration-300
+                ${index % 2 === 0 ? 'rounded-l-2xl' : 'rounded-r-2xl'}`}
+              >
+                <div className={`absolute ${index % 2 === 0 ? '-left-3' : '-right-3'} top-1/2 w-6 h-6 bg-white transform rotate-45 -translate-y-1/2`} />
+                <p className="text-2xl text-[#2E3142] leading-relaxed font-sans">
+                  "{quote}"
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

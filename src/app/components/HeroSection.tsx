@@ -1,7 +1,5 @@
 'use client';
 
-import Link from "next/link";
-import Image from 'next/image';
 import { Merriweather } from 'next/font/google';
 import { useState } from 'react';
 

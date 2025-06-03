@@ -1,6 +1,5 @@
 import { FaHandHoldingHeart, FaUserMd, FaShareAlt } from 'react-icons/fa';
 import { Merriweather } from "next/font/google";
-import { CirclePair } from "~/components/ui/circle-pair";
 import { CircleTriplet } from "~/components/ui/circle-triplet";
 
 const merriweather = Merriweather({
