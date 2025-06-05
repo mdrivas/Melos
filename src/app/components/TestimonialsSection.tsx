@@ -88,7 +88,7 @@ export default function TestimonialsSection() {
           {/* Navigation Buttons */}
           <button 
             onClick={prevTestimonial}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 bg-[#526B62] hover:bg-[#2C5E55] text-white p-3 rounded-full transition-colors z-10"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 bg-[#1473E6] hover:bg-[#2C5E55] text-white p-3 rounded-full transition-colors z-10"
             aria-label="Previous testimonial"
           >
             <IoIosArrowBack size={28} />
@@ -96,7 +96,7 @@ export default function TestimonialsSection() {
 
           <button 
             onClick={nextTestimonial}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 bg-[#526B62] hover:bg-[#2C5E55] text-white p-3 rounded-full transition-colors z-10"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 bg-[#1473E6] hover:bg-[#2C5E55] text-white p-3 rounded-full transition-colors z-10"
             aria-label="Next testimonial"
           >
             <IoIosArrowForward size={28} />

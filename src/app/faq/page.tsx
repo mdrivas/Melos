@@ -97,7 +97,7 @@ export default function FAQPage() {
             </p>
             <a 
               href="/contact" 
-              className="inline-block px-10 py-4 bg-[#526B61] text-white text-xl font-sans rounded-full hover:bg-[#3A5548] transition-all duration-300 ease-in-out hover:shadow-lg hover:transform hover:-translate-y-0.5"
+              className="inline-block px-10 py-4 bg-[#1473E6] text-white text-xl font-sans rounded-full hover:bg-[#3A5548] transition-all duration-300 ease-in-out hover:shadow-lg hover:transform hover:-translate-y-0.5"
             >
               Contact Us
             </a>

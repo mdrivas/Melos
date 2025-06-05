@@ -47,21 +47,18 @@ export default function WhyWeExistSection() {
             </h1>
             
             <div className="mt-6 space-y-8 font-sans">
-              <p className="text-xl lg:text-2xl leading-[1.8]">
-              Healthcare professionals are struggling to stay <span className="font-semibold">happy at work</span>. 
-              Many are exhausted or facing <span className="font-semibold">burn out</span>. 
-              Others are navigating <span className="font-semibold"> work-life balance</span> or considering <span className="font-semibold">career changes</span>.
-              To continue thriving, we believe every provider deserves <span className="font-semibold">support, clarity, and a path forward</span>
-              —without financial barriers or stigma.
+              <p className="text-xl leading-[1.8]">
+                Many healthcare professionals are facing burnout, struggling with 
+                work-life balance, or questioning their career path. 
+                We believe every provider deserves support without stigma or financial barriers.
               </p>
               
-              <p className="text-xl lg:text-2xl leading-[1.8]">
-                We created <em>The Provider's Coach Project</em>, a nonprofit organization offering 
-                <span className="font-semibold"> no cost, confidential coaching</span> to help you reconnect with your purpose, 
-                set healthy boundaries, and build a career that sustains you.
+              <p className="text-xl leading-[1.8]">
+                The Provider's Coach Project offers free, confidential coaching to help you 
+                reconnect with your purpose, set boundaries, and build a sustainable career.
               </p>
 
-              <p className="text-xl lg:text-2xl leading-[1.8] font-semibold">
+              <p className="text-xl leading-[1.8] font-semibold">
                 We're here for you — because when providers thrive, healthcare is better for everyone.
               </p>
             </div>
@@ -70,7 +67,7 @@ export default function WhyWeExistSection() {
               href="#booking"
               className="inline-block mt-12 px-10 py-4 bg-[#1473E6] text-white text-xl font-sans rounded-full hover:bg-[#3A5548] transition-all duration-300 ease-in-out hover:shadow-lg hover:transform hover:-translate-y-0.5"
             >
-              Book a Session
+              BOOK A SESSION
             </Link>
           </div>
         </div>  

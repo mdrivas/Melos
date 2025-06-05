@@ -7,7 +7,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#D4E6FF] border-t border-[#526B61]/10 pt-16 pb-8">
+    <footer className="bg-[#D4E6FF] border-t border-[#1473E6]/10 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
           {/* Logo and Info Column */}
@@ -24,7 +24,7 @@ export default function Footer() {
             </p>
             <a 
               href="mailto:info@providerscoachproject.org" 
-              className="text-[#2d3142]/80 hover:text-[#526B61] transition-colors mb-6 flex items-center text-lg"
+              className="text-[#2d3142]/80 hover:text-[#1473E6] transition-colors mb-6 flex items-center text-lg"
             >
               info@providerscoachproject.org
             </a>
@@ -32,16 +32,16 @@ export default function Footer() {
             <div>
               <h4 className="text-lg font-semibold text-[#2d3142] mb-4 text-xl">Social Media</h4>
               <div className="flex space-x-4">
-                <a href="#" className="text-[#526B61] hover:text-[#1B3B36] transition-colors">
+                <a href="#" className="text-[#1473E6] hover:text-[#1B3B36] transition-colors">
                   <FaInstagram size={24} />
                 </a>
-                <a href="#" className="text-[#526B61] hover:text-[#1B3B36] transition-colors">
+                <a href="#" className="text-[#1473E6] hover:text-[#1B3B36] transition-colors">
                   <FaLinkedin size={24} />
                 </a>
-                <a href="#" className="text-[#526B61] hover:text-[#1B3B36] transition-colors">
+                <a href="#" className="text-[#1473E6] hover:text-[#1B3B36] transition-colors">
                   <FaYoutube size={24} />
                 </a>
-                <a href="#" className="text-[#526B61] hover:text-[#1B3B36] transition-colors">
+                <a href="#" className="text-[#1473E6] hover:text-[#1B3B36] transition-colors">
                   <FaTiktok size={24} />
                 </a>
               </div>
@@ -52,19 +52,19 @@ export default function Footer() {
           <div className="flex flex-col">
             <h3 className="text-xl font-semibold text-[#2d3142] mb-6">Quick Links</h3>
             <nav className="flex flex-col space-y-4">
-              <Link href="/" className="text-[#2d3142]/80 hover:text-[#526B61] transition-colors">
+              <Link href="/" className="text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
                 HOME
               </Link>
-              <Link href="#about" className="text-[#2d3142]/80 hover:text-[#526B61] transition-colors">
+              <Link href="#about" className="text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
                 ABOUT
               </Link>
-              <Link href="#faq" className="text-[#2d3142]/80 hover:text-[#526B61] transition-colors">
+              <Link href="#faq" className="text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
                 FAQ
               </Link>
-              <Link href="#resources" className="text-[#2d3142]/80 hover:text-[#526B61] transition-colors">
+              <Link href="#resources" className="text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
                 RESOURCES
               </Link>
-              <Link href="#contact" className="text-[#2d3142]/80 hover:text-[#526B61] transition-colors">
+              <Link href="#contact" className="text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
                 CONTACT
               </Link>
             </nav>
@@ -80,7 +80,7 @@ export default function Footer() {
             </p>
             <Link 
               href="/comingSoon"
-              className="bg-[#526B61] text-white px-8 py-4 rounded lg:text-lg text-center hover:bg-[#1B3B36] transition-colors "
+              className="bg-[#1473E6] text-white px-8 py-4 rounded lg:text-lg text-center hover:bg-[#1B3B36] transition-colors "
             >
               BOOK A SESSION
             </Link>
@@ -88,7 +88,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-[#526B61]/10 pt-8">
+        <div className="border-t border-[#1473E6]/10 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-[#2d3142]/60 text-sm">
               © {currentYear} The Provider's Coach Project

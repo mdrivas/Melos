@@ -64,6 +64,12 @@ export function WaitlistForm({ onClose, onDevModeActivated }: {
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = 'Please enter a valid email address';
     }
+
+    if (!formData.providerRole) {
+      newErrors.providerRole = 'Provider role is required';
+    } else if (formData.providerRole === 'Other' && !formData.customRole.trim()) {
+      newErrors.customRole = 'Please specify your role';
+    }
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -111,15 +117,12 @@ export function WaitlistForm({ onClose, onDevModeActivated }: {
   }
 
   return (
-    <div className="bg-[#fff8f0] p-12 rounded-2xl shadow-xl max-w-2xl w-full">
-      <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold text-gray-900 mb-2">
+    <div className="bg-[#fff8f0] p-12 pt-20 rounded-2xl shadow-xl max-w-2xl w-full">
+      <div className="text-center mb-16 mt-8">
+        <h2 className="text-4xl font-bold text-gray-900 mb-8">
           Join the Waitlist
         </h2>
-        <p className="text-lg text-gray-600 italic mb-6">
-          
-        </p> 
-        <p className="text-gray-700 text-lg leading-relaxed">
+        <p className="text-gray-700 text-lg leading-relaxed max-w-xl mx-auto">
           Coaching sessions are coming soon. Secure your spot to start building a healthier, more fulfilling career.
         </p>
       </div>
@@ -127,6 +130,9 @@ export function WaitlistForm({ onClose, onDevModeActivated }: {
       <div className="max-w-lg mx-auto">
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
+            <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-1">
+              Name
+            </label>
             <input
               type="text"
               id="name"
@@ -141,6 +147,9 @@ export function WaitlistForm({ onClose, onDevModeActivated }: {
           </div>
 
           <div>
+            <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-1">
+              Email
+            </label>
             <input
               type="email"
               id="email"
@@ -156,29 +165,37 @@ export function WaitlistForm({ onClose, onDevModeActivated }: {
 
           <div className="space-y-3">
             <label htmlFor="providerRole" className="block text-sm font-semibold text-gray-700 mb-1">
-              Provider Role <span className="text-gray-500 font-normal">(optional)</span>
+              Provider Role
             </label>
             <select
               id="providerRole"
               value={formData.providerRole}
               onChange={(e) => setFormData(prev => ({ ...prev, providerRole: e.target.value, customRole: e.target.value !== 'Other' ? '' : prev.customRole }))}
-              className="mt-1 block w-full rounded-xl px-4 py-2.5 bg-white border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              className={`mt-1 block w-full rounded-xl px-4 py-2.5 bg-white border ${
+                errors.providerRole ? 'border-red-500' : 'border-gray-300'
+              } shadow-sm focus:border-blue-500 focus:ring-blue-500`}
             >
               <option value="">Select your role</option>
               {PROVIDER_ROLES.map(role => (
                 <option key={role} value={role}>{role}</option>
               ))}
             </select>
+            {errors.providerRole && <p className="mt-1 text-sm text-red-600">{errors.providerRole}</p>}
 
             {formData.providerRole === 'Other' && (
-              <input
-                type="text"
-                id="customRole"
-                value={formData.customRole}
-                onChange={(e) => setFormData(prev => ({ ...prev, customRole: e.target.value }))}
-                className="block w-full rounded-xl px-4 py-2.5 bg-white border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                placeholder="Please specify your role"
-              />
+              <div>
+                <input
+                  type="text"
+                  id="customRole"
+                  value={formData.customRole}
+                  onChange={(e) => setFormData(prev => ({ ...prev, customRole: e.target.value }))}
+                  className={`block w-full rounded-xl px-4 py-2.5 bg-white border ${
+                    errors.customRole ? 'border-red-500' : 'border-gray-300'
+                  } shadow-sm focus:border-blue-500 focus:ring-blue-500`}
+                  placeholder="Please specify your role"
+                />
+                {errors.customRole && <p className="mt-1 text-sm text-red-600">{errors.customRole}</p>}
+              </div>
             )}
           </div>
 
