@@ -12,11 +12,13 @@ const merriweather = Merriweather({
 
 export function NavBar() {
   const [visible, setVisible] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 150) {
         setVisible(false);
+        setIsOpen(false);
       } else {
         setVisible(true);
       }
@@ -26,48 +28,79 @@ export function NavBar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 shadow-sm ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/95 backdrop-blur-sm ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'}`}>
       <div className="max-w-[95%] mx-auto px-4">
-        <div className="flex items-center justify-between h-24 border-b border-[#526B61]/10 text-xl font-sans">
-          <Link href="/" className={`text-2xl font-bold tracking-wider text-[#010103] ${merriweather.className}`}>
+        <div className="flex items-center justify-between h-20 border-b border-[#1473E6]/10">
+          {/* Logo */}
+          <Link href="/" className={`text-xl sm:text-2xl font-bold tracking-wider text-[#010103] ${merriweather.className}`}>
             The Provider's Coach Project
           </Link>
-          <div className="hidden md:flex items-center space-x-8">
-            <Link 
-              href="/" 
-              className="px-4 py-2 text-[#2d3142]/80 hover:text-[#526B61] transition-colors"
-            >
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={toggleMenu}
+            className="md:hidden p-2 rounded-lg hover:bg-gray-100 focus:outline-none"
+            aria-label="Toggle menu"
+          >
+            <div className="w-6 h-4 relative flex flex-col justify-between">
+              <span className={`w-full h-0.5 bg-[#010103] transform transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-1.5' : ''}`} />
+              <span className={`w-full h-0.5 bg-[#010103] transition-all duration-300 ${isOpen ? 'opacity-0' : 'opacity-100'}`} />
+              <span className={`w-full h-0.5 bg-[#010103] transform transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-1.5' : ''}`} />
+            </div>
+          </button>
+
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-4 lg:space-x-8 text-lg">
+            <Link href="/" className="px-3 py-2 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
               HOME
             </Link>
-            <Link 
-              href="/about" 
-              className="px-4 py-2 text-[#2d3142]/80 hover:text-[#526B61] transition-colors"
-            >
+            <Link href="/about" className="px-3 py-2 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
               ABOUT
             </Link>
-            <Link 
-              href="/faq" 
-              className="px-4 py-2 text-[#2d3142]/80 hover:text-[#526B61] transition-colors group relative"
-            >
+            <Link href="/faq" className="px-3 py-2 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
               FAQ
-              <span className="inline-block ml-1 transform group-hover"></span>
             </Link>
-            <Link 
-              href="/resources" 
-              className="px-4 py-2 text-[#2d3142]/80 hover:text-[#526B61] transition-colors"
-            >
+            <Link href="/resources" className="px-3 py-2 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
               RESOURCES
             </Link>
-            <Link 
-              href="/contact"
-              className="px-4 py-2 text-[#2d3142]/80 hover:text-[#526B61] transition-colors"
-            >
+            <Link href="/contact" className="px-3 py-2 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
               CONTACT
             </Link>
             <Link 
               href="/comingSoon"
-              className="px-8 py-3 bg-[#1473E6] text-white hover:bg-[#1B3B36] transition-colors rounded"
+              className="px-6 py-2.5 bg-[#1473E6] text-white hover:bg-[#1B3B36] transition-colors rounded-full text-base"
+            >
+              BOOK A SESSION
+            </Link>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        <div className={`md:hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
+          <div className="py-4 space-y-2 flex flex-col items-center text-lg">
+            <Link href="/" className="w-full text-center py-3 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
+              HOME
+            </Link>
+            <Link href="/about" className="w-full text-center py-3 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
+              ABOUT
+            </Link>
+            <Link href="/faq" className="w-full text-center py-3 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
+              FAQ
+            </Link>
+            <Link href="/resources" className="w-full text-center py-3 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
+              RESOURCES
+            </Link>
+            <Link href="/contact" className="w-full text-center py-3 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
+              CONTACT
+            </Link>
+            <Link 
+              href="/comingSoon"
+              className="w-full max-w-xs text-center px-6 py-2.5 bg-[#1473E6] text-white hover:bg-[#1B3B36] transition-colors rounded-full"
             >
               BOOK A SESSION
             </Link>

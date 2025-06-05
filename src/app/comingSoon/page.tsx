@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from 'react';
+import type { JSX } from 'react';
 import { api } from "~/trpc/react";
 import { useRouter } from "next/navigation";
 import { Merriweather } from "next/font/google";
@@ -47,6 +48,12 @@ export default function ComingSoonPage() {
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = 'Please enter a valid email address';
     }
+
+    if (!formData.providerRole) {
+      newErrors.providerRole = 'Provider role is required';
+    } else if (formData.providerRole === 'Other' && !formData.customRole.trim()) {
+      newErrors.customRole = 'Please specify your role';
+    }
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -86,7 +93,7 @@ export default function ComingSoonPage() {
             </p>
             <button
               onClick={handleClose}
-              className="inline-block px-10 py-4 bg-[#526B61] text-white text-xl font-sans rounded-full hover:bg-[#3A5548] transition-all duration-300 ease-in-out hover:shadow-lg hover:transform hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center px-10 py-4 bg-[#1473E6] text-white text-xl font-sans rounded-full hover:bg-[#0f5fc8] transition-all duration-300 ease-in-out hover:shadow-lg hover:transform hover:-translate-y-0.5"
             >
               Return Home
             </button>
@@ -101,7 +108,7 @@ export default function ComingSoonPage() {
       <div className="container mx-auto px-4 min-h-[calc(100vh-6rem)] flex items-center">
         <div className="max-w-4xl mx-auto py-24">
           <div className="text-center mb-12">
-            <h2 className={`text-5xl lg:text-6xl text-[#2E3142] mb-6 ${merriweather.className}`}>
+            <h2 className={`text-5xl lg:text-6xl text-[#2E3142] mb-6 mt-4 ${merriweather.className}`}>
               Join the Waitlist
             </h2>
             <p className="text-xl text-[#2E3142]/80 leading-relaxed max-w-3xl mx-auto">
@@ -112,6 +119,9 @@ export default function ComingSoonPage() {
           <div className="max-w-2xl mx-auto bg-white/80 rounded-2xl p-8 shadow-lg">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
+                <label htmlFor="name" className="block text-lg font-medium text-[#2E3142] mb-2">
+                  Name
+                </label>
                 <input
                   type="text"
                   id="name"
@@ -119,13 +129,16 @@ export default function ComingSoonPage() {
                   onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
                   className={`mt-1 block w-full rounded-xl px-6 py-4 bg-white border text-lg ${
                     errors.name ? 'border-red-500' : 'border-gray-300'
-                  } shadow-sm focus:border-[#526B61] focus:ring-[#526B61]`}
+                  } shadow-sm focus:border-[#1473E6] focus:ring-[#1473E6]`}
                   placeholder="Your Name"
                 />
                 {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name}</p>}
               </div>
 
               <div>
+                <label htmlFor="email" className="block text-lg font-medium text-[#2E3142] mb-2">
+                  Email
+                </label>
                 <input
                   type="email"
                   id="email"
@@ -133,7 +146,7 @@ export default function ComingSoonPage() {
                   onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
                   className={`mt-1 block w-full rounded-xl px-6 py-4 bg-white border text-lg ${
                     errors.email ? 'border-red-500' : 'border-gray-300'
-                  } shadow-sm focus:border-[#526B61] focus:ring-[#526B61]`}
+                  } shadow-sm focus:border-[#1473E6] focus:ring-[#1473E6]`}
                   placeholder="name@example.com"
                 />
                 {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
@@ -141,29 +154,44 @@ export default function ComingSoonPage() {
 
               <div className="space-y-3">
                 <label htmlFor="providerRole" className="block text-lg font-medium text-[#2E3142] mb-2">
-                  Provider Role <span className="text-[#2E3142]/60 font-normal">(optional)</span>
+                  Provider Role
                 </label>
-                <select
-                  id="providerRole"
-                  value={formData.providerRole}
-                  onChange={(e) => setFormData(prev => ({ ...prev, providerRole: e.target.value, customRole: e.target.value !== 'Other' ? '' : prev.customRole }))}
-                  className="block w-full rounded-xl px-6 py-4 bg-white border border-gray-300 text-lg shadow-sm focus:border-[#526B61] focus:ring-[#526B61]"
-                >
-                  <option value="">Select your role</option>
-                  {PROVIDER_ROLES.map(role => (
-                    <option key={role} value={role}>{role}</option>
-                  ))}
-                </select>
+                <div className="relative">
+                  <select
+                    id="providerRole"
+                    value={formData.providerRole}
+                    onChange={(e) => setFormData(prev => ({ ...prev, providerRole: e.target.value, customRole: e.target.value !== 'Other' ? '' : prev.customRole }))}
+                    className={`block w-full rounded-xl px-6 py-4 bg-white border text-lg ${
+                      errors.providerRole ? 'border-red-500' : 'border-gray-300'
+                    } shadow-sm focus:border-[#1473E6] focus:ring-[#1473E6] ${!formData.providerRole ? 'text-gray-400' : 'text-[#2E3142]'} appearance-none pr-12`}
+                  >
+                    <option value="" disabled>Select your role</option>
+                    {PROVIDER_ROLES.map(role => (
+                      <option key={role} value={role}>{role}</option>
+                    ))}
+                  </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-700">
+                    <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M6 8l4 4 4-4" />
+                    </svg>
+                  </div>
+                </div>
+                {errors.providerRole && <p className="mt-1 text-sm text-red-600">{errors.providerRole}</p>}
 
                 {formData.providerRole === 'Other' && (
-                  <input
-                    type="text"
-                    id="customRole"
-                    value={formData.customRole}
-                    onChange={(e) => setFormData(prev => ({ ...prev, customRole: e.target.value }))}
-                    className="block w-full rounded-xl px-6 py-4 bg-white border border-gray-300 text-lg shadow-sm focus:border-[#526B61] focus:ring-[#526B61]"
-                    placeholder="Please specify your role"
-                  />
+                  <div className="mt-3">
+                    <input
+                      type="text"
+                      id="customRole"
+                      value={formData.customRole}
+                      onChange={(e) => setFormData(prev => ({ ...prev, customRole: e.target.value }))}
+                      className={`block w-full rounded-xl px-6 py-4 bg-white border text-lg ${
+                        errors.customRole ? 'border-red-500' : 'border-gray-300'
+                      } shadow-sm focus:border-[#1473E6] focus:ring-[#1473E6]`}
+                      placeholder="Please specify your role"
+                    />
+                    {errors.customRole && <p className="mt-1 text-sm text-red-600">{errors.customRole}</p>}
+                  </div>
                 )}
               </div>
 
@@ -174,9 +202,19 @@ export default function ComingSoonPage() {
               <button
                 type="submit"
                 disabled={createWaitlistEntry.isPending}
-                className="w-full bg-[#526B61] text-white py-4 px-6 rounded-full text-xl font-medium hover:bg-[#3A5548] transition-all duration-300 ease-in-out hover:shadow-lg hover:transform hover:-translate-y-0.5 disabled:opacity-50 mt-6"
+                className="w-full bg-[#1473E6] text-white py-4 px-6 rounded-full text-xl font-medium hover:bg-[#0f5fc8] transition-all duration-300 ease-in-out hover:shadow-lg hover:transform hover:-translate-y-0.5 disabled:opacity-50 mt-6 flex items-center justify-center"
               >
-                {createWaitlistEntry.isPending ? 'Joining...' : "I'm in!"}
+                {createWaitlistEntry.isPending ? (
+                  <>
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Joining...
+                  </>
+                ) : (
+                  "I'm in!"
+                )}
               </button>
             </form>
           </div>

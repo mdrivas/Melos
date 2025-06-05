@@ -15,22 +15,18 @@ export default function ResourcesPage() {
     {
       title: "Articles & Research",
       description: "We're curating a collection of valuable articles and research papers about physician coaching and wellness.",
-      link: "#"
     },
     {
       title: "Wellness Resources",
       description: "A carefully selected list of wellness resources specifically for healthcare providers.",
-      link: "#"
     },
     {
       title: "Professional Development",
       description: "Resources for professional growth and career development in healthcare.",
-      link: "#"
     },
     {
       title: "Community Resources",
       description: "Connect with other healthcare providers and find support in your local community.",
-      link: "#"
     }
   ];
 
@@ -49,8 +45,8 @@ export default function ResourcesPage() {
           <h1 className={`text-5xl lg:text-6xl tracking-tight text-[#2E3142] text-center mb-8 ${merriweather.className}`}>
             Resources
           </h1>
-          <p className="text-xl text-[#2E3142]/80 text-center max-w-3xl mx-auto mb-16 leading-relaxed">
-            A curated collection of resources to support healthcare providers in their personal and professional journey.
+          <p className="text-xl text-[#2E3142]/80 text-center max-w-5xl mx-auto mb-16">
+            We're building a curated collection of resources to support healthcare providers in their personal and professional journey.
           </p>
 
           <div className="max-w-6xl mx-auto">
@@ -66,13 +62,9 @@ export default function ResourcesPage() {
                   <p className="text-lg text-[#2E3142]/80 mb-6 min-h-[4rem] leading-relaxed">
                     {resource.description}
                   </p>
-                  <a 
-                    href={resource.link}
-                    className="inline-flex items-center text-lg text-[#526B61] font-medium hover:text-[#3A5548] transition-colors"
-                  >
-                    Learn More 
-                    <span className="transform translate-x-0 group-hover:translate-x-1 transition-transform ml-1">→</span>
-                  </a>
+                  <span className="inline-block text-lg text-[#1473E6]/70 font-medium italic">
+                    Coming Soon
+                  </span>
                 </div>
               ))}
             </div>

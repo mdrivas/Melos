@@ -183,3 +183,27 @@ export const waitlistEntries = createTable(
 
 export type WaitlistEntry = InferSelectModel<typeof waitlistEntries>;
 export type NewWaitlistEntry = InferInsertModel<typeof waitlistEntries>;
+
+export const contactSubmissions = createTable(
+  "contact_submissions",
+  {
+    id: varchar("id", { length: 255 })
+      .notNull()
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    firstName: varchar("first_name", { length: 255 }).notNull(),
+    lastName: varchar("last_name", { length: 255 }).notNull(),
+    email: varchar("email", { length: 255 }).notNull(),
+    phone: varchar("phone", { length: 50 }),
+    message: text("message").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .default(sql`CURRENT_TIMESTAMP`)
+      .notNull(),
+  },
+  (table) => ({
+    emailIndex: index("contact_email_idx").on(table.email),
+  })
+);
+
+export type ContactSubmission = InferSelectModel<typeof contactSubmissions>;
+export type NewContactSubmission = InferInsertModel<typeof contactSubmissions>;

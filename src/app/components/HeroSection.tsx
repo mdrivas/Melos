@@ -23,9 +23,9 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-24 bg-gradient-to-b from-[#C4D6ED] via-[#C4D6ED] to-[#C4D6ED]">
+    <section className="relative min-h-[calc(100vh-0px)] flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 md:pt-24 bg-gradient-to-b from-[#C4D6ED] via-[#C4D6ED] to-[#C4D6ED]">
       {/* Sun background */}
-      <div className="absolute top-[46%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-[#FFD559]" />
+      <div className="absolute top-[47%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] sm:w-[350px] sm:h-[350px] rounded-full bg-[#FFD559]" />
       
       {/* Wave decoration */}
       <div className="absolute bottom-0 left-0 right-0 h-72">
@@ -44,20 +44,20 @@ export default function HeroSection() {
       </div>
       
       {/* Content container */}
-      <div className={`relative max-w-5xl mx-auto text-center z-10 flex flex-col space-y-10 text-[#010103] ${merriweather.className}`}>
+      <div className={`relative max-w-5xl mx-auto text-center z-10 flex flex-col space-y-6 sm:space-y-8 text-[#010103] ${merriweather.className}`}>
         {/* First heading */}
         <div>
           <h2 className="tracking-wide">
-            <span className={`text-2xl sm:text-3xl lg:text-[3.5rem] leading-tight`}>
+            <span className={`text-xl sm:text-2xl lg:text-[2.5rem] leading-tight`}>
               Who's taking care of the providers?
             </span>
           </h2>
         </div>
 
         {/* We are - centered in sun */}
-        <div className="relative h-[380px] flex items-center justify-center">
+        <div className="relative h-[280px] sm:h-[320px] flex items-center justify-center">
           <h1 className="tracking-wide">
-            <span className={`text-7xl sm:text-8xl lg:text-[10rem] leading-none block`}>
+            <span className={`text-5xl sm:text-6xl lg:text-[8rem] leading-none block`}>
               We are.
             </span>
           </h1>
@@ -65,14 +65,14 @@ export default function HeroSection() {
 
         {/* Bottom content */}
         <div>
-          <h2 className="text-2xl sm:text-3xl lg:text-[3.5rem] mb-7 tracking-wide">
+          <h2 className="text-xl sm:text-2xl lg:text-[2.5rem] mb-4 sm:mb-5 tracking-wide">
             The Provider's Coach Project
           </h2>
-          <p className="text-xl sm:text-2xl lg:text-[2.0rem] tracking-wide leading-loose font-sans">
-            A Non-Profit Organization Offering No-Cost Coaching for Healthcare Providers by Healthcare Providers
+          <p className="text-lg sm:text-xl lg:text-[1.5rem] tracking-wide leading-relaxed font-sans max-w-4xl mx-auto">
+            A non-profit offering no-cost coaching for healthcare providers by healthcare providers
           </p>
           
-          <div className="mt-8">
+          <div className="mt-6 sm:mt-8">
             <button 
               onClick={handleClick}
               disabled={isLoading}

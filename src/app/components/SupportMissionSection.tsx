@@ -36,9 +36,9 @@ export default function SupportMissionSection() {
 
         <div className="max-w-6xl mx-auto text-center">
           <h2 className={`text-4xl lg:text-6xl font-bold mb-6 text-[#2d3142] ${merriweather.className}`}>
-          Support Our Mission
+            Support Our Mission
           </h2>
-          <p className="text-2xl text-[#2d3142]/90 leading-relaxed max-w-4xl mx-auto mb-12">
+          <p className="text-xl text-[#2d3142]/90 leading-relaxed max-w-4xl mx-auto mb-12">
             We're committed to making coaching available to every provider who needs it—but we need your help.
           </p>
           
@@ -46,7 +46,7 @@ export default function SupportMissionSection() {
             {supportOptions.map((item, index) => (
               <div 
                 key={index} 
-                className="bg-[#C4D6ED]/90 text-[#010103] backdrop-blur-sm rounded-xl px-10 py-12 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex flex-col items-center"
+                className="bg-[#D4E6FF]/90 text-[#010103] backdrop-blur-sm rounded-xl px-10 py-12 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex flex-col items-center"
               >
                 <div className="mb-8">
                   <item.icon size={48} />

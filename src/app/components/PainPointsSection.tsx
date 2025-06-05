@@ -101,7 +101,7 @@ export default function PainPointsSection() {
                 ${index % 2 === 0 ? 'rounded-l-2xl' : 'rounded-r-2xl'}`}
               >
                 <div className={`absolute ${index % 2 === 0 ? '-left-3' : '-right-3'} top-1/2 w-6 h-6 bg-white transform rotate-45 -translate-y-1/2`} />
-                <p className="text-2xl text-[#2E3142] leading-relaxed font-sans">
+                <p className="text-xl text-[#2E3142] leading-relaxed font-sans">
                   "{quote}"
                 </p>
               </div>
