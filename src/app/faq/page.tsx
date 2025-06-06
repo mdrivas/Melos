@@ -12,6 +12,13 @@ const merriweather = Merriweather({
   display: 'swap',
 });
 
+const renderAnswer = (answer: string | JSX.Element) => {
+  if (typeof answer === 'string') {
+    return answer;
+  }
+  return answer;
+};
+
 export default function FAQPage() {
   const faqs = [
     {
@@ -20,7 +27,7 @@ export default function FAQPage() {
     },
     {
       question: "What is The Provider's Coach Project, and who is it for?",
-      answer: "The Provider's Coach Project is a nonprofit organization dedicated to offering free one-on-one coaching to healthcare providers, including physicians, physician associates, and nurse practitioners. Our mission is to support those struggling with burnout, stress, or career dissatisfaction by providing a safe space to explore solutions and regain joy in their profession."
+      answer: "The Provider's Coach Project is a non-profit organization dedicated to offering free one-on-one coaching to healthcare providers, including physicians, physician associates, and nurse practitioners. Our mission is to support those struggling with burnout, stress, or career dissatisfaction by providing a safe space to explore solutions and regain joy in their profession."
     },
     {
       question: "How does the coaching process work?",
@@ -28,11 +35,22 @@ export default function FAQPage() {
     },
     {
       question: "How is The Provider's Coach Project funded, and is there any cost to participate?",
-      answer: "The coaching services are completely free for healthcare providers. The Provider's Coach Project is funded through grants and fundraising efforts. Our goal is to make coaching accessible to all providers, regardless of their financial situation, to foster a healthier and more resilient healthcare workforce."
+      answer: "The coaching services are completely free for healthcare providers. The Provider's Coach Project is funded through grants and fundraising efforts. Our goal is to make coaching accessible to all providers, regardless of their financial situation, and to foster a healthier and more resilient healthcare workforce."
     },
     {
       question: "How do I sign up for a coaching session?",
-      answer: "You can sign up for a coaching session by visiting our website and selecting an available time slot that works for you. The process is simple—just fill out a brief intake form, and you'll receive a Zoom link for your session. There's no long-term commitment; you can book sessions as needed based on your schedule and needs."
+      answer: (
+        <>
+          You can sign up for a coaching session by visiting our{' '}
+          <a 
+            href="/comingSoon" 
+            className="text-[#1473E6] hover:text-[#3A5548] transition-colors underline"
+          >
+            scheduling page
+          </a>
+          {' '}and selecting an available time slot that works for you. The process is simple: just fill out a brief intake form, and you'll receive a Zoom link for your session. There's no long-term commitment; you can book sessions as needed based on your schedule and needs.
+        </>
+      )
     },
     {
       question: "Is coaching confidential?",
@@ -41,7 +59,7 @@ export default function FAQPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-white pt-24">
+    <main className="min-h-screen bg-white pt-20">
       <section className="py-20 bg-gradient-to-b from-[#D4E6FF] via-[#E8F1FF] to-white relative overflow-hidden">
         {/* Circle Decorations */}
         <div className="absolute top-14 right-16">
@@ -66,7 +84,7 @@ export default function FAQPage() {
                 <Accordion.Item
                   key={index}
                   value={`item-${index}`}
-                  className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 "
+                  className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200"
                 >
                   <Accordion.Header>
                     <Accordion.Trigger className="group flex items-center justify-between w-full px-8 py-6 text-left">
@@ -82,7 +100,7 @@ export default function FAQPage() {
                   <Accordion.Content className="overflow-hidden transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
                     <div className="px-8 pb-6">
                       <p className="text-xl leading-[1.8] text-[#2E3142]">
-                        {faq.answer}
+                        {renderAnswer(faq.answer)}
                       </p>
                     </div>
                   </Accordion.Content>

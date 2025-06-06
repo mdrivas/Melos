@@ -112,7 +112,7 @@ export default function ComingSoonPage() {
               Join the Waitlist
             </h2>
             <p className="text-xl text-[#2E3142]/80 leading-relaxed max-w-3xl mx-auto">
-              Coaching sessions are coming soon. Secure your spot to start building a healthier, more fulfilling career.
+              Coaching sessions are coming soon. Secure your spot to get connected with a coach. 
             </p>
           </div>
           

@@ -34,10 +34,10 @@ const defaultAnimationSettings = {
 
 export default function PainPointsSection() {
   const quotes = [
-    "I'm feeling burned out and exhausted—how can I regain my passion for medicine?",
-    "I'm at a career crossroads—should I change specialties, take on a leadership role, or leave clinical practice?",
+    "I'm feeling burned out and exhausted. How can I regain my passion for medicine?",
+    "I'm at a career crossroads. Should I change specialties, take on a leadership role, or leave clinical practice?",
     "How can I create a better work-life balance without feeling guilty or compromising my career?",
-    "My workplace is toxic—but I don't know if I should leave or try to change my environment—what should I do?"
+    "My workplace is toxic, but I don't know if I should leave or try to change my environment. What should I do?"
   ];
 
   // Create individual refs and inView states for each quote

@@ -85,7 +85,7 @@ export default function ContactPage() {
               </h1>
               
               <p className="text-lg text-[#2E3142]/80 mb-6">
-                Feel free to use the form or send us an email. We're here to help healthcare providers on their journey.
+                Fill out the form or send us an email. We'll get back to you as soon as we can.
               </p>
 
               <div className="space-y-6">

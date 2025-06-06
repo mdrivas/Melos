@@ -68,8 +68,10 @@ export default function HeroSection() {
           <h2 className="text-xl sm:text-2xl lg:text-[2.5rem] mb-4 sm:mb-5 tracking-wide">
             The Provider's Coach Project
           </h2>
-          <p className="text-lg sm:text-xl lg:text-[1.5rem] tracking-wide leading-relaxed font-sans max-w-4xl mx-auto">
-            A non-profit offering no-cost coaching for healthcare providers by healthcare providers
+          <p className="text-lg sm:text-xl lg:text-[1.5rem] leading-[1.8] font-sans max-w-4xl mx-auto">
+            A non-profit offering no-cost coaching 
+            <br />
+            for healthcare providers by healthcare providers
           </p>
           
           <div className="mt-6 sm:mt-8">
