@@ -16,7 +16,7 @@ const merriweather = Merriweather({
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-white pt-24">
+    <main className="min-h-screen bg-white pt-20">
       {/* Mission & Vision Section */}
       <section className="py-20 bg-gradient-to-b from-[#D4E6FF] via-[#E8F1FF] to-white relative overflow-hidden">
         <div className="absolute top-14 right-16">
@@ -32,7 +32,11 @@ export default function AboutPage() {
               </h2>
               <div className="max-w-5xl mx-auto px-4">
                 <p className="text-xl leading-[1.8] text-[#2E3142] indent-8 mx-auto">
-                  The Provider's Coach Project is dedicated to supporting the wellbeing, career fulfillment and resilience of healthcare providers by offering no-cost development coaching. Our mission is to help providers gain clarity, align with their values and take control of their career paths. By providing accessible coaching we aim to heal the professional culture of medicine and empower providers to thrive both personally and professionally.
+                  The Provider's Coach Project is dedicated to supporting the wellbeing, career fulfillment, and resilience 
+                  of healthcare providers by offering no-cost development coaching. Our mission is to help providers 
+                  gain clarity, align with their values, and take control of their career paths. By providing accessible 
+                  coaching, we aim to heal the professional culture of medicine and empower providers to thrive both 
+                  personally and professionally.
                 </p>
               </div>
             </div>
@@ -139,6 +143,34 @@ export default function AboutPage() {
                 <p className="text-xl leading-[1.8] text-[#2E3142]">
                   Dr. Andrea Austin is an emergency physician, simulation educator, and certified Physician Development Coach (ICF Level 1). Her service in the military and work on the front lines of emergency medicine gave her a firsthand understanding of burnout and moral injury in healthcare. Through coaching, she unlocked a renewed sense of agency, fueling her passion for helping others do the same. She hosts the Heartline: Changemaking in Healthcare podcast and authored Revitalized: A Guidebook to Following Your Healing Heartline, which explores overcoming trauma, compassion fatigue, and moral injury to thrive while working in healthcare.
                 </p>
+              </div>
+            </div>
+
+            {/* Dr. Kris Pyles-Sweet */}
+            <div className="flex flex-col md:flex-row items-center gap-12">
+              <div className="w-48 h-48 lg:w-64 lg:h-64 relative rounded-full overflow-hidden flex-shrink-0 border-4 border-[#D4E6FF]">
+                <Image
+                  src="/BOD_images/kris_pyles_sweet.JPG"
+                  alt="Kris Pyles-Sweet, DMSc, PA-C"
+                  fill
+                  className="object-cover object-[0_20%]"
+                />
+              </div>
+              <div>
+                <h3 className={`text-3xl lg:text-4xl tracking-tight text-[#2E3142] mb-6 ${merriweather.className}`}>
+                  Kris Pyles-Sweet, DMSc, PA-C
+                </h3>
+                <div className="space-y-6">
+                  <p className="text-xl leading-[1.8] text-[#2E3142]">
+                    Dr. Kris Pyles-Sweet is a board-certified Physician Associate and healthcare leader with over two decades of experience in primary care, geriatrics, wellness, and home-based medicine. As founder of multiple medical practices, she has firsthand insight into the operational and emotional challenges healthcare providers face, particularly in high-demand, under-resourced environments.
+                  </p>
+                  <p className="text-xl leading-[1.8] text-[#2E3142]">
+                    Holding a Doctorate in Medical Science with a focus on Leadership, Dr. Sweet is a passionate advocate for clinician well-being, professional sustainability, and policy-driven solutions to healthcare burnout. She currently serves as Secretary-Treasurer of the American Academy of Physician Associates and has served on numerous national committees focused on governance, advocacy, and professional advancement.
+                  </p>
+                  <p className="text-xl leading-[1.8] text-[#2E3142]">
+                    A published author, educator, and national speaker, Dr. Sweet brings to the board a deep understanding of burnout's systemic roots, a commitment to fostering resilience, and a clear voice for change in clinician culture.
+                  </p>
+                </div>
               </div>
             </div>
 
