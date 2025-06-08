@@ -54,30 +54,30 @@ export default function PainPointsSection() {
   const inViewStates = [isInView1, isInView2, isInView3, isInView4];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-[#C4D6ED] to-[#C4D6ED] relative">
+    <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-[#C4D6ED] to-[#C4D6ED] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative">
-        {/* Circle Decorations */}
-        <div className="absolute top-16 -left-20">
+        {/* Circle Decorations - hidden on smaller screens */}
+        <div className="absolute top-16 -left-20 hidden lg:block">
           <CircleTriplet color="bg-[#D4E6FF]/80" />
         </div>
-        <div className="absolute bottom-16 -right-20">
+        <div className="absolute bottom-16 -right-20 hidden lg:block">
           <CirclePair color="bg-white/60" />
         </div>
 
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className={`text-4xl lg:text-6xl text-[#2d3142] tracking-tight mb-6 ${merriweather.className}`}>
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#2d3142] tracking-tight mb-6 px-4 ${merriweather.className}`}>
           What Brings Providers to Coaching
           </h2>
         </div>
 
         {/* Quotes Container */}
-        <div className="max-w-5xl mx-auto space-y-12">
+        <div className="max-w-5xl mx-auto space-y-8 sm:space-y-12">
           {quotes.map((quote, index) => (
             <motion.div 
               key={index}
               ref={refs[index]}
-              className={`flex items-center gap-6 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
+              className={`flex flex-col sm:flex-row items-center gap-4 sm:gap-6 ${index % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'}`}
               initial={animationConfig.initial}
               animate={inViewStates[index] ? animationConfig.animate : animationConfig.initial}
               transition={{
@@ -87,7 +87,7 @@ export default function PainPointsSection() {
               }}
             >
               {/* Doctor Icon */}
-              <div className="relative w-20 h-20 flex-shrink-0">
+              <div className="relative w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0">
                 <Image
                   src="/icons/doctor-male-icon.png"
                   alt="Doctor Icon"
@@ -97,11 +97,11 @@ export default function PainPointsSection() {
               </div>
 
               {/* Quote Bubble */}
-              <div className={`flex-1 relative bg-white rounded-2xl p-6 shadow-lg transform hover:-translate-y-1 transition-all duration-300
-                ${index % 2 === 0 ? 'rounded-l-2xl' : 'rounded-r-2xl'}`}
+              <div className={`flex-1 relative bg-white rounded-2xl p-4 sm:p-6 shadow-lg transform hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto
+                ${index % 2 === 0 ? 'sm:rounded-l-2xl' : 'sm:rounded-r-2xl'}`}
               >
-                <div className={`absolute ${index % 2 === 0 ? '-left-3' : '-right-3'} top-1/2 w-6 h-6 bg-white transform rotate-45 -translate-y-1/2`} />
-                <p className="text-xl text-[#2E3142] leading-relaxed font-sans">
+                <div className={`absolute hidden sm:block ${index % 2 === 0 ? 'sm:-left-3' : 'sm:-right-3'} top-1/2 w-6 h-6 bg-white transform rotate-45 -translate-y-1/2`} />
+                <p className="text-lg sm:text-xl text-[#2E3142] leading-relaxed font-sans">
                   "{quote}"
                 </p>
               </div>

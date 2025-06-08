@@ -32,6 +32,10 @@ export function NavBar() {
     setIsOpen(!isOpen);
   };
 
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
+
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/95 backdrop-blur-sm ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'}`}>
       <div className="max-w-[95%] mx-auto px-4">
@@ -83,23 +87,24 @@ export function NavBar() {
         {/* Mobile Menu */}
         <div className={`md:hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
           <div className="py-4 space-y-2 flex flex-col items-center text-lg">
-            <Link href="/" className="w-full text-center py-3 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
+            <Link href="/" onClick={closeMenu} className="w-full text-center py-3 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
               HOME
             </Link>
-            <Link href="/about" className="w-full text-center py-3 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
+            <Link href="/about" onClick={closeMenu} className="w-full text-center py-3 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
               ABOUT
             </Link>
-            <Link href="/faq" className="w-full text-center py-3 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
+            <Link href="/faq" onClick={closeMenu} className="w-full text-center py-3 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
               FAQ
             </Link>
-            <Link href="/resources" className="w-full text-center py-3 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
+            <Link href="/resources" onClick={closeMenu} className="w-full text-center py-3 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
               RESOURCES
             </Link>
-            <Link href="/contact" className="w-full text-center py-3 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
+            <Link href="/contact" onClick={closeMenu} className="w-full text-center py-3 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
               CONTACT
             </Link>
             <Link 
               href="/comingSoon"
+              onClick={closeMenu}
               className="w-full max-w-xs text-center px-6 py-2.5 bg-[#1473E6] text-white hover:bg-[#1B3B36] transition-colors rounded-full"
             >
               BOOK A SESSION

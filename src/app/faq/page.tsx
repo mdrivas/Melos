@@ -59,18 +59,18 @@ export default function FAQPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-white pt-20">
-      <section className="py-20 bg-gradient-to-b from-[#D4E6FF] via-[#E8F1FF] to-white relative overflow-hidden">
-        {/* Circle Decorations */}
-        <div className="absolute top-14 right-16">
+    <main className="min-h-screen bg-white pt-20 overflow-x-hidden">
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-[#D4E6FF] via-[#E8F1FF] to-white relative overflow-hidden">
+        {/* Circle Decorations - hidden on smaller screens */}
+        <div className="absolute top-14 right-16 hidden lg:block">
           <CircleTriplet color="bg-[#E8F1FF]" />
         </div>
-        <div className="absolute bottom-20 left-16">
+        <div className="absolute bottom-20 left-16 hidden lg:block">
           <CirclePair color="bg-[#E8F1FF]" />
         </div>
 
         <div className="container mx-auto px-4">
-          <h1 className={`text-5xl lg:text-6xl tracking-tight text-[#2E3142] text-center mb-16 ${merriweather.className}`}>
+          <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight text-[#2E3142] text-center mb-12 sm:mb-16 ${merriweather.className}`}>
             Frequently Asked Questions
           </h1>
 
@@ -78,7 +78,7 @@ export default function FAQPage() {
             <Accordion.Root
               type="single"
               collapsible
-              className="space-y-6"
+              className="space-y-4 sm:space-y-6"
             >
               {faqs.map((faq, index) => (
                 <Accordion.Item
@@ -87,19 +87,19 @@ export default function FAQPage() {
                   className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200"
                 >
                   <Accordion.Header>
-                    <Accordion.Trigger className="group flex items-center justify-between w-full px-8 py-6 text-left">
-                      <span className={`text-xl lg:text-2xl text-[#2E3142] font-medium font-sans`}>
+                    <Accordion.Trigger className="group flex items-center justify-between w-full px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 text-left">
+                      <span className="text-lg sm:text-xl lg:text-2xl text-[#2E3142] font-medium font-sans pr-4">
                         {faq.question}
                       </span>
                       <ChevronDownIcon
-                        className="h-6 w-6 text-[#2E3142] transition-transform duration-300 group-data-[state=open]:rotate-180"
+                        className="h-5 w-5 sm:h-6 sm:w-6 text-[#2E3142] transition-transform duration-300 group-data-[state=open]:rotate-180 flex-shrink-0"
                         aria-hidden
                       />
                     </Accordion.Trigger>
                   </Accordion.Header>
                   <Accordion.Content className="overflow-hidden transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
-                    <div className="px-8 pb-6">
-                      <p className="text-xl leading-[1.8] text-[#2E3142]">
+                    <div className="px-4 sm:px-6 md:px-8 pb-4 sm:pb-5 md:pb-6">
+                      <p className="text-base sm:text-lg md:text-xl leading-[1.6] sm:leading-[1.8] text-[#2E3142]">
                         {renderAnswer(faq.answer)}
                       </p>
                     </div>
@@ -109,13 +109,13 @@ export default function FAQPage() {
             </Accordion.Root>
           </div>
 
-          <div className="text-center mt-16">
-            <p className="text-xl text-[#2E3142] mb-8">
+          <div className="text-center mt-12 sm:mt-16">
+            <p className="text-lg sm:text-xl text-[#2E3142] mb-6 sm:mb-8">
               Still have questions? We're here to help.
             </p>
             <a 
               href="/contact" 
-              className="inline-block px-10 py-4 bg-[#1473E6] text-white text-xl font-sans rounded-full hover:bg-[#3A5548] transition-all duration-300 ease-in-out hover:shadow-lg hover:transform hover:-translate-y-0.5"
+              className="inline-block px-8 sm:px-10 py-3 sm:py-4 bg-[#1473E6] text-white text-lg sm:text-xl font-sans rounded-full hover:bg-[#3A5548] transition-all duration-300 ease-in-out hover:shadow-lg hover:transform hover:-translate-y-0.5"
             >
               Contact Us
             </a>
