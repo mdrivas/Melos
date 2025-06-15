@@ -41,14 +41,14 @@ export function NavBar() {
       <div className="max-w-[95%] mx-auto px-4">
         <div className="flex items-center justify-between h-20 border-b border-[#1473E6]/10">
           {/* Logo */}
-          <Link href="/" className={`text-xl sm:text-2xl font-bold tracking-wider text-[#010103] ${merriweather.className}`}>
+          <Link href="/" className={`text-lg sm:text-xl lg:text-2xl font-bold tracking-wider text-[#010103] whitespace-nowrap ${merriweather.className} pr-5`}>
             The Provider's Coach Project
           </Link>
 
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMenu}
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100 focus:outline-none"
+            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 focus:outline-none"
             aria-label="Toggle menu"
           >
             <div className="w-6 h-4 relative flex flex-col justify-between">
@@ -59,25 +59,25 @@ export function NavBar() {
           </button>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-4 lg:space-x-8 text-lg">
-            <Link href="/" className="px-3 py-2 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
+          <div className="hidden lg:flex items-center space-x-2 lg:space-x-4 xl:space-x-8 text-base lg:text-lg">
+            <Link href="/" className="px-2 lg:px-3 py-2 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors whitespace-nowrap">
               HOME
             </Link>
-            <Link href="/about" className="px-3 py-2 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
+            <Link href="/about" className="px-2 lg:px-3 py-2 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors whitespace-nowrap">
               ABOUT
             </Link>
-            <Link href="/faq" className="px-3 py-2 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
+            <Link href="/faq" className="px-2 lg:px-3 py-2 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors whitespace-nowrap">
               FAQ
             </Link>
-            <Link href="/resources" className="px-3 py-2 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
+            <Link href="/resources" className="px-2 lg:px-3 py-2 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors whitespace-nowrap">
               RESOURCES
             </Link>
-            <Link href="/contact" className="px-3 py-2 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
+            <Link href="/contact" className="px-2 lg:px-3 py-2 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors whitespace-nowrap">
               CONTACT
             </Link>
             <Link 
               href="/comingSoon"
-              className="px-6 py-2.5 bg-[#1473E6] text-white hover:bg-[#1B3B36] transition-colors rounded-full text-base"
+              className="px-4 lg:px-6 py-2 lg:py-2.5 bg-[#1473E6] text-white hover:bg-[#1B3B36] transition-colors rounded-full text-base whitespace-nowrap"
             >
               BOOK A SESSION
             </Link>
@@ -85,7 +85,7 @@ export function NavBar() {
         </div>
 
         {/* Mobile Menu */}
-        <div className={`md:hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
+        <div className={`lg:hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
           <div className="py-4 space-y-2 flex flex-col items-center text-lg">
             <Link href="/" onClick={closeMenu} className="w-full text-center py-3 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
               HOME

@@ -39,7 +39,7 @@ export default function SupportMissionSection() {
             Support Our Mission
           </h2>
           <p className="text-lg sm:text-xl text-[#2d3142]/90 leading-relaxed max-w-4xl mx-auto mb-8 sm:mb-10 md:mb-12 px-4">
-            We're committed to making coaching available to every provider who needs it—but we need your help.
+            We're committed to making coaching available to every provider who needs it — but we need your help.
           </p>
           
           <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-12 mb-16 sm:mb-20 md:mb-28">
@@ -57,7 +57,7 @@ export default function SupportMissionSection() {
           </div>
 
           {/* Setting Sun positioned to appear behind the footer - responsive sizing */}
-          <div className="absolute bottom-0 left-0 right-0 -mb-32 sm:-mb-40 md:-mb-48 overflow-hidden pointer-events-none">
+          <div className="absolute bottom-0 left-0 right-0 -mb-28 sm:-mb-40 md:-mb-48 overflow-hidden pointer-events-none">
             <div className="relative h-[300px] sm:h-[400px] md:h-[450px] w-full">
               <div className="absolute left-1/2 bottom-0 transform -translate-x-1/2 translate-y-1/2 w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[450px] md:h-[450px] rounded-full bg-[#FFD559] opacity-90" />
             </div>
