@@ -34,10 +34,10 @@ export default function ResourcesPage() {
     <main className="min-h-screen bg-white pt-24">
       <section className="py-20 bg-gradient-to-b from-[#D4E6FF] via-[#E8F1FF] to-white relative overflow-hidden">
         {/* Circle Decorations */}
-        <div className="absolute top-14 right-16">
+        <div className="absolute top-14 right-16 hidden lg:block">
           <CircleTriplet color="bg-[#E8F1FF]" />
         </div>
-        <div className="absolute bottom-20 left-16">
+        <div className="absolute bottom-20 left-16 hidden lg:block">
           <CirclePair color="bg-[#E8F1FF]" />
         </div>
 

@@ -174,6 +174,31 @@ export default function AboutPage() {
               </div>
             </div>
 
+            {/* Elias Drivas */}
+            <div className="flex flex-col md:flex-row items-center gap-8 sm:gap-10 md:gap-12">
+              <div className="w-40 h-40 sm:w-48 sm:h-48 lg:w-64 lg:h-64 relative rounded-full overflow-hidden flex-shrink-0 border-4 border-[#D4E6FF]">
+                <Image
+                  src="/BOD_images/elias_drivas.jpeg"
+                  alt="Elias Drivas"
+                  fill
+                  className="object-cover object-[0%_0%]"
+                />
+              </div>
+              <div>
+                <h3 className={`text-2xl sm:text-3xl lg:text-4xl tracking-tight text-[#2E3142] mb-4 sm:mb-6 text-center md:text-left ${merriweather.className}`}>
+                  Elias Drivas
+                </h3>
+                <div className="space-y-4 sm:space-y-6">
+                  <p className="text-base sm:text-lg md:text-xl leading-[1.6] sm:leading-[1.8] text-[#2E3142]">
+                    Elias Drivas is a senior IT executive with over 20 years of experience leading transformative technology initiatives across cybersecurity, infrastructure, identity management, and enterprise service delivery. As Director of IT at Chargie LLC, he brings a strategic, execution-driven approach to advancing cybersecurity maturity, cloud modernization, and operational excellence. He has led enterprise-wide efforts including Microsoft 365 tenant migrations, Okta identity governance, data center consolidations, and cloud storage transitions—strengthening cybersecurity through Zero Trust frameworks, phishing-resistant MFA, and FedRAMP-compliant implementations while minimizing disruption and enhancing business continuity.
+                  </p>
+                  <p className="text-base sm:text-lg md:text-xl leading-[1.6] sm:leading-[1.8] text-[#2E3142]">
+                    Prior to Chargie, Elias held senior leadership roles at Wedbush Securities and Baker Tilly. At Baker Tilly, he led geographically dispersed teams through multiple merger integrations, implemented enterprise-wide ITSM processes, and built strategic partnerships across business units. At Wedbush, he oversaw identity governance, audit compliance, and national IT service delivery. Elias holds PMP and ITIL v4 Foundation certifications, with a professional focus on aligning technology with business strategy, strengthening cybersecurity frameworks, and scaling IT services for growth and compliance.
+                  </p>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>

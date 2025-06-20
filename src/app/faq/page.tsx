@@ -27,7 +27,7 @@ export default function FAQPage() {
     },
     {
       question: "What is The Provider's Coach Project, and who is it for?",
-      answer: "The Provider's Coach Project is a non-profit organization dedicated to offering free one-on-one coaching to healthcare providers, including physicians, physician associates, and nurse practitioners. Our mission is to support those struggling with burnout, stress, or career dissatisfaction by providing a safe space to explore solutions and regain joy in their profession."
+      answer: "The Provider's Coach Project is a non-profit organization dedicated to offering no-cost one-on-one coaching to healthcare providers, including physicians, physician associates, and nurse practitioners. Our mission is to support those struggling with burnout, stress, or career dissatisfaction by providing a safe space to explore solutions and regain joy in their profession."
     },
     {
       question: "How does the coaching process work?",
@@ -35,7 +35,7 @@ export default function FAQPage() {
     },
     {
       question: "How is The Provider's Coach Project funded, and is there any cost to participate?",
-      answer: "The coaching services are completely free for healthcare providers. The Provider's Coach Project is funded through grants and fundraising efforts. Our goal is to make coaching accessible to all providers, regardless of their financial situation, and to foster a healthier and more resilient healthcare workforce."
+      answer: "The coaching services are offered at no-cost to healthcare providers. The Provider's Coach Project is funded through grants and fundraising efforts. Our goal is to make coaching accessible to all providers, regardless of their financial situation, and to foster a healthier and more resilient healthcare workforce."
     },
     {
       question: "How do I sign up for a coaching session?",
