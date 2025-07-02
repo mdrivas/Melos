@@ -55,16 +55,16 @@ export default function Footer() {
               <Link href="/" className="text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
                 HOME
               </Link>
-              <Link href="#about" className="text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
+              <Link href="/about" className="text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
                 ABOUT
               </Link>
-              <Link href="#faq" className="text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
+              <Link href="/faq" className="text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
                 FAQ
               </Link>
-              <Link href="#resources" className="text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
+              <Link href="/resources" className="text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
                 RESOURCES
               </Link>
-              <Link href="#contact" className="text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
+              <Link href="/contact" className="text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
                 CONTACT
               </Link>
             </nav>
