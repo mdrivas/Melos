@@ -32,18 +32,38 @@ export default function Footer() {
             <div>
               <h4 className="text-lg font-semibold text-[#2d3142] mb-4 text-xl">Social Media</h4>
               <div className="flex space-x-4">
-                <a href="#" className="text-[#1473E6] hover:text-[#1B3B36] transition-colors">
-                  <FaInstagram size={24} />
-                </a>
-                <a href="#" className="text-[#1473E6] hover:text-[#1B3B36] transition-colors">
+                <a 
+                  href="https://www.linkedin.com/company/providerscoachproject/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-[#1473E6] hover:text-[#1B3B36] transition-colors"
+                >
                   <FaLinkedin size={24} />
                 </a>
-                <a href="#" className="text-[#1473E6] hover:text-[#1B3B36] transition-colors">
-                  <FaYoutube size={24} />
-                </a>
-                <a href="#" className="text-[#1473E6] hover:text-[#1B3B36] transition-colors">
-                  <FaTiktok size={24} />
-                </a>
+                <div className="relative group">
+                  <a className="text-[#1473E6] hover:text-[#1B3B36] transition-colors cursor-not-allowed opacity-70">
+                    <FaInstagram size={24} />
+                  </a>
+                  <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-[#2d3142] text-white px-2 py-1 rounded text-sm opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                    Coming Soon
+                  </span>
+                </div>
+                <div className="relative group">
+                  <a className="text-[#1473E6] hover:text-[#1B3B36] transition-colors cursor-not-allowed opacity-70">
+                    <FaYoutube size={24} />
+                  </a>
+                  <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-[#2d3142] text-white px-2 py-1 rounded text-sm opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                    Coming Soon
+                  </span>
+                </div>
+                <div className="relative group">
+                  <a className="text-[#1473E6] hover:text-[#1B3B36] transition-colors cursor-not-allowed opacity-70">
+                    <FaTiktok size={24} />
+                  </a>
+                  <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-[#2d3142] text-white px-2 py-1 rounded text-sm opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                    Coming Soon
+                  </span>
+                </div>
               </div>
             </div>
           </div>

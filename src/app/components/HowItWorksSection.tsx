@@ -50,7 +50,7 @@ export default function HowItWorksSection() {
       icon: FaUserNurse
     },
     {
-      title: "Healthcare Leaders",
+      title: "MD and PA Students",
       description: "managing burnout",
       icon: FaHospitalUser
     }
