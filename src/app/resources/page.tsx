@@ -189,7 +189,7 @@ export default function ResourcesPage() {
         <div className="absolute top-14 right-16 hidden lg:block">
           <CircleTriplet color="bg-[#E8F1FF]" />
         </div>
-        <div className="absolute bottom-20 left-16 hidden lg:block">
+        <div className="absolute bottom-20 left-16 hidden 2xl:block pointer-events-none">
           <CirclePair color="bg-[#E8F1FF]" />
         </div>
 
@@ -371,8 +371,15 @@ export default function ResourcesPage() {
                 <p className="text-[#2E3142]/70 text-sm">
                   {currentArticle.journal} ({currentArticle.year})
                 </p>
-                <p className="text-sm text-[#1473E6] mt-1">
-                  DOI: {currentArticle.doi}
+                <p className="text-sm text-[#2E3142]/70 mt-1">
+                  DOI: <Link 
+                    href={`https://doi.org/${currentArticle.doi}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#1473E6] hover:text-[#1473E6]/80 transition-colors"
+                  >
+                    {currentArticle.doi}
+                  </Link>
                 </p>
                 <span className="inline-block text-sm bg-[#1473E6]/10 text-[#1473E6] px-3 py-1 rounded-full mt-2">
                   {currentArticle.category}
