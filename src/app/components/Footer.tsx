@@ -78,6 +78,9 @@ export default function Footer() {
               <Link href="/about" className="text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
                 ABOUT
               </Link>
+              <Link href="/coaches" className="text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
+                COACHES
+              </Link>
               <Link href="/faq" className="text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
                 FAQ
               </Link>

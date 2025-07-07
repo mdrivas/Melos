@@ -62,7 +62,7 @@ export default function WhyWeExistSection() {
               </p>
               
               <p className="text-lg sm:text-xl leading-[1.7] sm:leading-[1.8]">
-                The Provider's Coach Project offers free, confidential coaching to help you 
+                The Provider's Coach Project offers no-cost, confidential coaching to help you 
                 reconnect with your purpose, set boundaries, and build a sustainable career.
               </p>
 

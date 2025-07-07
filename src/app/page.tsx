@@ -1,6 +1,7 @@
 import { Merriweather, Inter } from 'next/font/google';
 import HeroSection from "./components/HeroSection";
 import WhyWeExistSection from "./components/WhyWeExistSection";
+import CoachesSection from "./components/CoachesSection";
 import PainPointsSection from "./components/PainPointsSection";
 import HowItWorksSection from "./components/HowItWorksSection";
 import TestimonialsSection from "./components/TestimonialsSection";
@@ -25,6 +26,7 @@ export default function Home() {
       <HeroSection />
       <WhyWeExistSection />
       <HowItWorksSection />
+      <CoachesSection />
       <PainPointsSection />
       <TestimonialsSection />
       <SupportMissionSection />
