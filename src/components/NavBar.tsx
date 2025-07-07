@@ -66,6 +66,9 @@ export function NavBar() {
             <Link href="/about" className="px-2 lg:px-3 py-2 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors whitespace-nowrap">
               ABOUT
             </Link>
+            <Link href="/coaches" className="px-2 lg:px-3 py-2 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors whitespace-nowrap">
+              COACHES
+            </Link>
             <Link href="/faq" className="px-2 lg:px-3 py-2 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors whitespace-nowrap">
               FAQ
             </Link>
@@ -92,6 +95,9 @@ export function NavBar() {
             </Link>
             <Link href="/about" onClick={closeMenu} className="w-full text-center py-3 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
               ABOUT
+            </Link>
+            <Link href="/coaches" onClick={closeMenu} className="w-full text-center py-3 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
+              COACHES
             </Link>
             <Link href="/faq" onClick={closeMenu} className="w-full text-center py-3 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
               FAQ
