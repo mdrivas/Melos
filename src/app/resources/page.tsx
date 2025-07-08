@@ -156,6 +156,54 @@ export default function ResourcesPage() {
       category: "Stress Management",
       rating: 4.6,
       amazonUrl: "https://www.amazon.com/Burnout-audiobook/dp/B07M8DLR1L"
+    },
+    {
+      title: "Mindset",
+      author: "Carol Dweck",
+      coverImage: "/books/mindset.jpg",
+      category: "Personal Development",
+      rating: 4.6,
+      amazonUrl: "https://www.amazon.com/Mindset-Psychology-Carol-S-Dweck/dp/0345472322"
+    },
+    {
+      title: "You are a Badass",
+      author: "Jen Sincero",
+      coverImage: "/books/you_are_a_badass.jpg",
+      category: "Personal Development",
+      rating: 4.7,
+      amazonUrl: "https://www.amazon.com/You-Are-Badass-Doubting-Greatness/dp/0762447699"
+    },
+    {
+      title: "The Gifts of Imperfection",
+      author: "Brene Brown",
+      coverImage: "/books/the_gifts_of_imperfection.jpg",
+      category: "Wellness",
+      rating: 4.8,
+      amazonUrl: "https://www.amazon.com/Gifts-Imperfection-Think-Supposed-Embrace/dp/1592858491"
+    },
+    {
+      title: "The Power of Now",
+      author: "Eckhart Tolle",
+      coverImage: "/books/the_power_of_now.jpg",
+      category: "Wellness",
+      rating: 4.7,
+      amazonUrl: "https://www.amazon.com/Power-Now-Guide-Spiritual-Enlightenment/dp/1577314808"
+    },
+    {
+      title: "Think and Grow Rich",
+      author: "Napoleon Hill",
+      coverImage: "/books/think_and_grow_rich.jpg",
+      category: "Personal Development",
+      rating: 4.7,
+      amazonUrl: "https://www.amazon.com/Think-Grow-Rich-Napoleon-Hill/dp/0785833528"
+    },
+    {
+      title: "The Gap and the Gain",
+      author: "Dan Sullivan",
+      coverImage: "/books/the_gap_and_the_gain.jpg",
+      category: "Personal Development",
+      rating: 4.8,
+      amazonUrl: "https://www.amazon.com/Gap-Gain-High-Achievers-Happiness-Confidence/dp/1401964362"
     }
   ];
 
