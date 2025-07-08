@@ -74,9 +74,9 @@ export default function SchedulePage() {
   };
 
   return (
-    <main className="min-h-screen bg-white">
-      <div className="container mx-auto px-4 py-12">
-        <h1 className="text-4xl font-bold text-blue-900 mb-8 text-center">
+    <main className="min-h-screen bg-white pt-16">
+      <div className="container mx-auto px-4 py-8">
+        <h1 className="text-3xl md:text-4xl font-bold text-blue-900 mb-2 text-center">
           Schedule Your Coaching Session
         </h1>
 

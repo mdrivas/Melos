@@ -70,9 +70,9 @@ export default function TestimonialsSection() {
     // On mobile (assumed), show only one testimonial
     // On desktop, show two testimonials
     return [
-      testimonials[currentIndex]!,
-      testimonials[(currentIndex + 1) % testimonials.length]!
-    ];
+    testimonials[currentIndex]!,
+    testimonials[(currentIndex + 1) % testimonials.length]!
+  ];
   };
 
   return (
@@ -142,23 +142,23 @@ export default function TestimonialsSection() {
               </div>
               <p className="text-[#2E3142] text-lg sm:text-xl leading-relaxed mb-6 sm:mb-8">
                 {testimonials[(currentIndex + 1) % testimonials.length]!.quote}
-              </p>
-              <div className="flex items-center">
+                </p>
+                <div className="flex items-center">
                 <div className="relative w-12 h-12 sm:w-16 sm:h-16">
-                  <Image
+                    <Image
                     src={testimonials[(currentIndex + 1) % testimonials.length]!.image}
                     alt={testimonials[(currentIndex + 1) % testimonials.length]!.author}
-                    fill
-                    className="rounded-full object-contain"
-                  />
-                </div>
+                      fill
+                      className="rounded-full object-contain"
+                    />
+                  </div>
                 <div className="ml-3 sm:ml-4">
                   <p className="font-bold text-[#2E3142] text-lg sm:text-xl">
                     {testimonials[(currentIndex + 1) % testimonials.length]!.author}
-                  </p>
+                    </p>
                   <p className="text-[#2E3142] text-sm sm:text-md">
                     {testimonials[(currentIndex + 1) % testimonials.length]!.role}
-                  </p>
+                    </p>
                 </div>
               </div>
             </div>
