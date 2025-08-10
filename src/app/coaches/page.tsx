@@ -41,6 +41,28 @@ const coaches = [
     bio: [
       `Robert McGregor retired from a 40 + year career as a pediatrician at the end of 2024, having also served as a medical educator, a pediatric residency director, an hospital administrator, department chair and most recently as Chief Medical Officer, reporting directly to the CEO, for the Akron Children's Hospital system throughout eastern Ohio. Physician Wellness and resiliency have been a big part of my career, having co-founded a barrier free, concierge, mental health non-profit (Akron Physician Wellness Initiative). I remain active at the Northeast Ohio Medical University, as Professor of Pediatrics. I enjoy feeding forward to any medical provider or trainee exploring transition or adjusting to changing roles in medicine through my role as a coach. Medical providers, especially those in transition are susceptible to the "imposter phenomenon" and I enjoy coaching clients through those times of self-doubt.`
     ]
+  },
+  {
+    name: "Paula Drivas",
+    credentials: "MBA",
+    title: "Master Certified Physician Coach",
+    imagePath: "/coach_images/Paula-Drivas.jpeg",
+    imagePosition: "object-[0_0%]",
+    bio: [
+      "Paula is passionate about helping healthcare providers reconnect with what matters most, envision bold futures, and design lives they truly love. A firm believer that every provider deserves to feel empowered, valued, and fulfilled, she creates a safe, supportive space for reflection, clarity, and growth.",
+      "After completing her coach training with The Physician Coaching Institute, Paula committed herself to supporting fellow healthcare professionals through life's complexities — whether navigating burnout, career transitions, or simply seeking greater joy and balance. Her compassionate, insightful coaching conversations help clients rediscover their purpose, honor their core values, and take confident, forward-focused steps toward the future they deserve.",
+      "Paula envisions a world where all healthcare providers thrive, both personally and professionally — and she's honored to walk alongside them on that journey."
+    ]
+  },
+  {
+    name: "Andrea Austin",
+    credentials: "MD",
+    title: "Certified Physician Development Coach (ICF Level 1)",
+    imagePath: "/coach_images/Andrea-Austin.jpg",
+    imagePosition: "object-[0_0%]",
+    bio: [
+      "Dr. Andrea Austin is an emergency physician and certified Physician Development Coach (ICF Level 1). Her service in the military and work on the front lines of emergency medicine gave her a firsthand understanding of burnout and moral injury in healthcare. She coaches in the areas of career fulfillment, leadership, and changemaking."
+    ]
   }
 ];
 
