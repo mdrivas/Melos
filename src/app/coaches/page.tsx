@@ -59,7 +59,7 @@ const coaches = [
     credentials: "MD",
     title: "Certified Physician Development Coach (ICF Level 1)",
     imagePath: "/coach_images/Andrea-Austin.jpg",
-    imagePosition: "object-[0_0%]",
+    imagePosition: "object-[0_15%]",
     bio: [
       "Dr. Andrea Austin is an emergency physician and certified Physician Development Coach (ICF Level 1). Her service in the military and work on the front lines of emergency medicine gave her a firsthand understanding of burnout and moral injury in healthcare. She coaches in the areas of career fulfillment, leadership, and changemaking."
     ]

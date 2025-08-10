@@ -51,14 +51,12 @@ Take care,
     {
       icon: FaHandHoldingHeart,
       title: "Donate",
-      description: "Help us expand our reach and make coaching accessible to more healthcare providers in need.",
-      onClick: () => {}
+      description: "Help us expand our reach and make coaching accessible to more healthcare providers in need."
     },
     {
       icon: FaUserMd,
       title: "Volunteer as a Coach",
-      description: "Join our mission if you're a certified physician development coach passionate about supporting fellow providers.",
-      onClick: () => {}
+      description: "Join our mission if you're a certified physician development coach passionate about supporting fellow providers."
     },
     {
       icon: FaShareAlt,
@@ -88,7 +86,7 @@ Take care,
               <div 
                 key={index} 
                 onClick={item.onClick}
-                className={`bg-[#D4E6FF]/90 text-[#010103] backdrop-blur-sm rounded-xl px-6 sm:px-8 md:px-10 py-8 sm:py-10 md:py-12 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex flex-col items-center ${item.title === "Spread the Word" ? "cursor-pointer" : ""}`}
+                className={`bg-[#D4E6FF]/90 text-[#010103] backdrop-blur-sm rounded-xl px-6 sm:px-8 md:px-10 py-8 sm:py-10 md:py-12 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex flex-col items-center ${item.onClick ? "cursor-pointer" : ""}`}
               >
                 <div className="mb-6 sm:mb-8">
                   <item.icon className="w-10 h-10 sm:w-12 sm:h-12" />
