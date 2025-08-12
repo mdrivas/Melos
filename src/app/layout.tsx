@@ -7,6 +7,8 @@ import { AuthProvider } from "./components/AuthProvider";
 import { Suspense } from "react";
 import { NavBar } from "~/components/NavBar";
 import Footer from "./components/Footer";
+import { GivebutterScriptLoader } from "~/components/GivebutterScriptLoader";
+import { FloatingDonateWidget } from "~/components/FloatingDonateWidget";
 
 export const metadata: Metadata = {
   title: "The Provider's Coach Project",
@@ -34,6 +36,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={GeistSans.variable}>
+      <head>
+        <GivebutterScriptLoader />
+      </head>
       <body className="min-h-screen bg-white antialiased">
         <AuthProvider>
           <NavBar />
@@ -47,6 +52,7 @@ export default function RootLayout({
 
           <Footer />
           <Toaster />
+          <FloatingDonateWidget />
         </AuthProvider>
       </body>
     </html>

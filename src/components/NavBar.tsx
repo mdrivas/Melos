@@ -1,8 +1,10 @@
 'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { Merriweather } from 'next/font/google';
+import { FaHeart } from 'react-icons/fa';
+import { FaChevronDown } from 'react-icons/fa';
 
 const merriweather = Merriweather({
   weight: ['300', '400', '700', '900'],
@@ -13,19 +15,33 @@ const merriweather = Merriweather({
 export function NavBar() {
   const [visible, setVisible] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
+  const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
+  const aboutDropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 150) {
         setVisible(false);
         setIsOpen(false);
+        setIsAboutDropdownOpen(false);
       } else {
         setVisible(true);
       }
     };
 
+    const handleClickOutside = (event: MouseEvent) => {
+      if (aboutDropdownRef.current && !aboutDropdownRef.current.contains(event.target as Node)) {
+        setIsAboutDropdownOpen(false);
+      }
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    document.addEventListener('mousedown', handleClickOutside);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
   }, []);
 
   const toggleMenu = () => {
@@ -60,23 +76,52 @@ export function NavBar() {
 
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center space-x-2 lg:space-x-4 xl:space-x-8 text-base lg:text-lg">
-            <Link href="/" className="px-2 lg:px-3 py-2 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors whitespace-nowrap">
-              HOME
-            </Link>
-            <Link href="/about" className="px-2 lg:px-3 py-2 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors whitespace-nowrap">
-              ABOUT
-            </Link>
-            <Link href="/coaches" className="px-2 lg:px-3 py-2 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors whitespace-nowrap">
-              COACHES
-            </Link>
-            <Link href="/faq" className="px-2 lg:px-3 py-2 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors whitespace-nowrap">
-              FAQ
-            </Link>
+            <div ref={aboutDropdownRef} className="relative">
+              <button
+                onClick={() => setIsAboutDropdownOpen(!isAboutDropdownOpen)}
+                className="px-2 lg:px-3 py-2 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors whitespace-nowrap flex items-center gap-1"
+              >
+                ABOUT <FaChevronDown className={`w-3 h-3 transition-transform ${isAboutDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+              
+              {isAboutDropdownOpen && (
+                <div className="absolute top-full left-0 mt-1 bg-white rounded-lg shadow-lg py-2 min-w-[160px] z-50">
+                  <Link 
+                    href="/about" 
+                    className="block px-4 py-2 text-[#2d3142]/80 hover:text-[#1473E6] hover:bg-gray-50 transition-colors"
+                    onClick={() => setIsAboutDropdownOpen(false)}
+                  >
+                    ABOUT US
+                  </Link>
+                  <Link 
+                    href="/coaches" 
+                    className="block px-4 py-2 text-[#2d3142]/80 hover:text-[#1473E6] hover:bg-gray-50 transition-colors"
+                    onClick={() => setIsAboutDropdownOpen(false)}
+                  >
+                    COACHES
+                  </Link>
+                  <Link 
+                    href="/faq" 
+                    className="block px-4 py-2 text-[#2d3142]/80 hover:text-[#1473E6] hover:bg-gray-50 transition-colors"
+                    onClick={() => setIsAboutDropdownOpen(false)}
+                  >
+                    FAQ
+                  </Link>
+                </div>
+              )}
+            </div>
             <Link href="/resources" className="px-2 lg:px-3 py-2 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors whitespace-nowrap">
               RESOURCES
             </Link>
             <Link href="/contact" className="px-2 lg:px-3 py-2 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors whitespace-nowrap">
               CONTACT
+            </Link>
+            <Link
+              href="/donate"
+              className="px-4 lg:px-6 py-2 lg:py-2.5 bg-[#FF8A00] hover:bg-[#1B3B36] text-white transition-colors rounded-full text-base whitespace-nowrap flex items-center gap-2"
+            >
+              <FaHeart className="w-4 h-4" />
+              DONATE
             </Link>
             <Link 
               href="/comingSoon"
@@ -90,11 +135,8 @@ export function NavBar() {
         {/* Mobile Menu */}
         <div className={`lg:hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
           <div className="py-4 space-y-2 flex flex-col items-center text-lg">
-            <Link href="/" onClick={closeMenu} className="w-full text-center py-3 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
-              HOME
-            </Link>
             <Link href="/about" onClick={closeMenu} className="w-full text-center py-3 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
-              ABOUT
+              ABOUT US
             </Link>
             <Link href="/coaches" onClick={closeMenu} className="w-full text-center py-3 text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
               COACHES

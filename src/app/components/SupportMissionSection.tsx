@@ -4,6 +4,7 @@ import { FaHandHoldingHeart, FaUserMd, FaShareAlt, FaTimes, FaCheck } from 'reac
 import { Merriweather } from "next/font/google";
 import { CircleTriplet } from "~/components/ui/circle-triplet";
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const merriweather = Merriweather({
   weight: ['300', '400', '700', '900'],
@@ -12,6 +13,7 @@ const merriweather = Merriweather({
 });
 
 export default function SupportMissionSection() {
+  const router = useRouter();
   const [showShareModal, setShowShareModal] = useState(false);
   const [copiedItem, setCopiedItem] = useState<string | null>(null);
 
@@ -51,7 +53,8 @@ Take care,
     {
       icon: FaHandHoldingHeart,
       title: "Donate",
-      description: "Help us expand our reach and make coaching accessible to more healthcare providers in need."
+      description: "Help us expand our reach and make coaching accessible to more healthcare providers in need.",
+      onClick: () => router.push('/donate')
     },
     {
       icon: FaUserMd,
