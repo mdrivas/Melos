@@ -73,7 +73,7 @@ export default function WhyWeExistSection() {
             
             <div className="flex justify-center lg:justify-start">
               <Link 
-                href="#booking"
+                href="/schedule"
                 className="inline-block mt-8 sm:mt-10 md:mt-12 px-8 sm:px-10 py-3 sm:py-4 bg-[#1473E6] text-white text-lg sm:text-xl font-sans rounded-full hover:bg-[#3A5548] transition-all duration-300 ease-in-out hover:shadow-lg hover:transform hover:-translate-y-0.5"
               >
                 BOOK A SESSION

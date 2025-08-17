@@ -43,7 +43,7 @@ export default function FAQPage() {
         <>
           You can sign up for a coaching session by visiting our{' '}
           <a 
-            href="/comingSoon" 
+            href="/schedule" 
             className="text-[#1473E6] hover:text-[#3A5548] transition-colors underline"
           >
             scheduling page

@@ -17,7 +17,7 @@ export default function HeroSection() {
     setIsLoading(true);
     // Simulate loading time - remove this in production and replace with actual navigation logic
     setTimeout(() => {
-      window.location.href = '/comingSoon';
+      window.location.href = '/schedule';
       setIsLoading(false);
     }, 1500);
   };
