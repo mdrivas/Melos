@@ -124,7 +124,7 @@ export function NavBar() {
               DONATE
             </Link>
             <Link 
-              href="/comingSoon"
+              href="/schedule"
               className="px-4 lg:px-6 py-2 lg:py-2.5 bg-[#1473E6] text-white hover:bg-[#1B3B36] transition-colors rounded-full text-base whitespace-nowrap"
             >
               BOOK A SESSION
@@ -151,7 +151,7 @@ export function NavBar() {
               CONTACT
             </Link>
             <Link 
-              href="/comingSoon"
+              href="/schedule"
               onClick={closeMenu}
               className="w-full max-w-xs text-center px-6 py-2.5 bg-[#1473E6] text-white hover:bg-[#1B3B36] transition-colors rounded-full"
             >

@@ -90,6 +90,9 @@ export default function Footer() {
               <Link href="/contact" className="text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
                 CONTACT
               </Link>
+              <Link href="/schedule" className="text-[#2d3142]/80 hover:text-[#1473E6] transition-colors">
+                SCHEDULE
+              </Link>
             </nav>
           </div>
 
@@ -102,7 +105,7 @@ export default function Footer() {
               Take the first step towards a more fulfilling medical career.
             </p>
             <Link 
-              href="/comingSoon"
+              href="/schedule"
               className="bg-[#1473E6] text-white px-8 py-4 rounded lg:text-lg text-center hover:bg-[#1B3B36] transition-colors "
             >
               BOOK A SESSION
