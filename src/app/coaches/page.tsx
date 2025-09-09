@@ -63,6 +63,17 @@ const coaches = [
     bio: [
       "Dr. Andrea Austin is an emergency physician and certified Physician Development Coach (ICF Level 1). Her service in the military and work on the front lines of emergency medicine gave her a firsthand understanding of burnout and moral injury in healthcare. She coaches in the areas of career fulfillment, leadership, and changemaking."
     ]
+  },
+    {
+    name: "Michelle Knox",
+    credentials: "MD",
+    title: "Certified Physician Development Coach",
+    imagePath: "/coach_images/Michelle-Knox.jpg",
+    imagePosition: "object-[0_45%]",
+    bio: [
+      "Michele Knox, MD empowers healthcare professionals to navigate life's twists and turns, build resilience, and find clarity for a life of greater ease and grace.  Using evidence-based processes, she helps clients clarify their goals, identify obstacles, and take sustainable action.",
+      "As a Master Certified Physician Development Coach, following 25+ years in Ophthalmology & Physician Leadership, Michele understands the complexity of a life in medicine.  Her medical training was completed at Dalhousie University, Canada & The University of California San Francisco. She served in leadership roles at all levels of a very large group practice in Northern California:  Department Chief, Medical Center Assistant Physician in Chief and Regional Leadership of Operating Rooms & Procedure Rooms for 21 hospitals.  Michele has extensive expertise supporting those in training, navigating career transitions &  leadership, in addition to building clinician wellness & resilience. "
+    ]
   }
 ];
 
