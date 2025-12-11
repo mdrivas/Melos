@@ -74,6 +74,16 @@ const coaches = [
       "Michele Knox, MD empowers healthcare professionals to navigate life's twists and turns, build resilience, and find clarity for a life of greater ease and grace.  Using evidence-based processes, she helps clients clarify their goals, identify obstacles, and take sustainable action.",
       "As a Master Certified Physician Development Coach, following 25+ years in Ophthalmology & Physician Leadership, Michele understands the complexity of a life in medicine.  Her medical training was completed at Dalhousie University, Canada & The University of California San Francisco. She served in leadership roles at all levels of a very large group practice in Northern California:  Department Chief, Medical Center Assistant Physician in Chief and Regional Leadership of Operating Rooms & Procedure Rooms for 21 hospitals.  Michele has extensive expertise supporting those in training, navigating career transitions &  leadership, in addition to building clinician wellness & resilience. "
     ]
+  },
+      {
+    name: "Julia Blank",
+    credentials: "MD",
+    title: "Certified Physician Development Coach",
+    imagePath: "/coach_images/Julia-Blank.jpg",
+    imagePosition: "object-[0_30%]",
+    bio: [
+      "Julia Blank, MD is a board-certified family physician with more than 20 years of experience caring for patients in the Los Angeles area. As an ICF-certified Physician Development Coach, she is passionate about supporting the unique needs of fellow clinicians who find themselves at a crossroads in their careers and lives. She partners with clients to navigate the challenges of their demanding careers. Whether it’s burnout, work-life balance, career transitions, or communication issues, Dr. Blank believes in a client-focused, collaborative approach, helping clinicians gain clarity, build resilience, and find practical ways to thrive both professionally and personally. "
+    ]
   }
 ];
 
